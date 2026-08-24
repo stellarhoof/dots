@@ -27,7 +27,8 @@ vim.keymap.set({ "n" }, "gK", vim.show_pos, {
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   desc = "Highlight yanked text",
   callback = function ()
-    vim.hl.hl_op({ timeout = 200 })
+    -- vim.hl.hl_op({ timeout = 200 })
+    vim.hl.on_yank({ timeout = 200 })
   end,
 })
 

@@ -1,7 +1,17 @@
 [bootstrap.packages]
+"brew-cask:font-fira-code" = "latest"
+"brew-cask:kitty" = "latest"
+"brew:ast-grep" = "latest"
 "brew:bfg" = "latest"
 "brew:coreutils" = "latest"
+"brew:diffutils" = "latest"
+"brew:dua-cli" = "latest"
+"brew:duf" = "latest"
+"brew:emmylua_ls" = "latest"
 "brew:eza" = "latest"
+"brew:fd" = "latest"
+"brew:findutils" = "latest"
+"brew:fish" = { version = "latest", os = ["macos/arm64"] }
 "brew:fzf" = "latest"
 "brew:gh" = "latest"
 "brew:git" = "latest"
@@ -9,9 +19,58 @@
 "brew:git-filter-repo" = "latest"
 "brew:git-get" = "latest"
 "brew:git-lfs" = "latest"
-"brew:gpg" = "latest"
+"brew:gnu-sed" = "latest"
+"brew:gnupg" = "latest"
+"brew:grep" = "latest"
+"brew:htop" = "latest"
 "brew:hub" = "latest"
+"brew:jq" = "latest"
+"brew:less" = "latest"
+"brew:lndir" = "latest"
 "brew:neovim" = "latest"
-"brew:node" = "latest"
+"brew:openssh" = "latest"
+"brew:pass" = "latest"
+"brew:pass-otp" = "latest"
 "brew:pinentry-mac" = "latest"
-"brew:rust" = "latest"
+"brew:qrencode" = "latest"
+"brew:ripgrep" = "latest"
+"brew:sevenzip" = "latest"
+"brew:shfmt" = "latest"
+"brew:starship" = "latest"
+"brew:tailwindcss-language-server" = "latest"
+"brew:tokei" = "latest"
+"brew:trash-cli" = "latest"
+"brew:tree-sitter-cli" = "latest"
+"brew:unzip" = "latest"
+"brew:wget" = "latest"
+"brew:worktrunk" = "latest"
+"brew:yt-dlp" = "latest"
+"brew:zoxide" = "latest"
+# "brew:killall" = "latest"
+
+[tools]
+claude-code = "latest"
+node = "latest"
+"npm:@vtsls/language-server" = "latest"
+pi = "latest"
+pnpm = "latest"
+python = "latest"
+rust = "latest"
+yarn = "latest"
+
+[settings]
+dotfiles.root = "~/Projects/github.com/stellarhoof/dots"
+
+[dotfiles]
+"~/.config/alacritty" = {}
+"~/.config/fish/config.fish" = {}
+"~/.config/gh" = {}
+"~/.config/git" = {}
+"~/.config/kitty" = {}
+"~/.config/nvim" = {}
+"~/.config/ripgrep" = {}
+"~/.config/starship.toml" = {}
+"~/.local/state/gnupg/gpg-agent.conf" = {}
+
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/fish"

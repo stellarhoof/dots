@@ -256,5 +256,5 @@ later(function ()
     },
     format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
   })
-  vim.o.formatexpr = require("conform").formatexpr
+  -- vim.o.formatexpr = require("conform").formatexpr
 end)
