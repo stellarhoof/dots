@@ -1,0 +1,91 @@
+[alias]
+	alias = "!git config --list | grep alias | cut -c 7-"
+	br = "branch -v"
+	cm = "commit"
+	cma = "commit --amend"
+	cman = "commit --amend --no-edit"
+	co = "checkout"
+	conflicts = "diff --name-only --diff-filter=U"
+	dfc = "diff --cached"
+	dfn = "diff --name-only"
+	dfp = "diff --patch-with-stat --diff-algorithm=minimal"
+	l = "log --pretty=format:'%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --decorate --date=short"
+	ll = "log --pretty=format:'%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --decorate --numstat"
+	st = "status"
+
+[blame]
+	date = "relative"
+
+[color]
+	ui = true
+
+[color "branch"]
+	current = "red"
+	local = "blue"
+	plain = "blue"
+	remote = "green"
+	upstream = "red"
+
+[color "diff"]
+	meta = "cyan bold"
+
+[color "status"]
+	added = "green"
+	branch = "blue"
+	changed = "blue"
+	header = "reset"
+	localBranch = "blue"
+	untracked = "red"
+
+[core]
+	autocrlf = false
+	whitespace = "cr-at-eol"
+
+[credential "https://gist.github.com"]
+	helper = ""
+	helper = "gh auth git-credential"
+
+[credential "https://github.com"]
+	helper = ""
+	helper = "gh auth git-credential"
+
+[delta]
+	side-by-side = true
+
+[filter "lfs"]
+	clean = "git-lfs clean -- %f"
+	process = "git-lfs filter-process"
+	required = true
+	smudge = "git-lfs smudge -- %f"
+
+[gitget]
+	root = "$XDG_PROJECTS_HOME"
+
+[grep]
+	extendRegexp = true
+	lineNumber = true
+
+[init]
+	defaultBranch = "master"
+
+[interactive]
+	diffFilter = "delta --color-only"
+
+[pager]
+	blame = "delta"
+	branch = false
+	diff = "delta"
+	log = "delta"
+	show = "delta"
+	status = false
+
+[pull]
+	rebase = false
+
+[push]
+	autoSetupRemote = true
+	default = "simple"
+
+[user]
+	email = "azure.satellite@gmail.com"
+	name = "Alejandro Hernandez"

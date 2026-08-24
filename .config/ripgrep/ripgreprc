@@ -1,0 +1,3 @@
+--hidden
+--smart-case
+--glob=!{package-lock.json,.git,yarn.lock,.yarn}

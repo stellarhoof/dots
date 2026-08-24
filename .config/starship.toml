@@ -1,1 +1,12 @@
-/nix/store/mvjwvk4vaa1rsasxrf7dmgmi0mkbmhff-home-manager-files/.config/starship.toml
+add_newline = false
+format = "$username$hostname$localip$shlvl$directory$git_branch$git_commit$git_state$package$nix_shell$env_var$custom$sudo$cmd_duration$line_break$jobs$time$status$character"
+
+[directory]
+truncate_to_repo = false
+truncation_length = 0
+
+[git_branch]
+symbol = " "
+
+[nix_shell]
+symbol = " "
