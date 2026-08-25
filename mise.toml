@@ -1,6 +1,10 @@
+# Install homebrew first and use normally. Following are some useful commands:
+# - brew uninstall <formula_name>
+# - brew autoremove
 [bootstrap.packages]
 "brew-cask:font-fira-code" = "latest"
 "brew-cask:kitty" = "latest"
+"brew-cask:brave-browser" = "latest"
 "brew:ast-grep" = "latest"
 "brew:bfg" = "latest"
 "brew:coreutils" = "latest"
@@ -11,7 +15,7 @@
 "brew:eza" = "latest"
 "brew:fd" = "latest"
 "brew:findutils" = "latest"
-"brew:fish" = { version = "latest", os = ["macos/arm64"] }
+"brew:fish" = "latest"
 "brew:fzf" = "latest"
 "brew:gh" = "latest"
 "brew:git" = "latest"
@@ -20,7 +24,7 @@
 "brew:git-get" = "latest"
 "brew:git-lfs" = "latest"
 "brew:gnu-sed" = "latest"
-"brew:gnupg" = "latest"
+# "brew:gnupg" = "latest"
 "brew:grep" = "latest"
 "brew:htop" = "latest"
 "brew:hub" = "latest"
