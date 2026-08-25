@@ -65,19 +65,24 @@ adopt = true
 "brew:zoxide" = "latest"
 
 [settings]
-dotfiles.root = "."
+dotfiles.default_mode = "symlink-each"
 
 [dotfiles]
-"~/.config/alacritty" = {}
-"~/.config/fish/config.fish" = {}
-"~/.config/gh" = {}
-"~/.config/git" = {}
-"~/.config/kitty" = {}
-"~/.config/nvim" = {}
-"~/.config/ripgrep" = {}
-"~/.config/starship.toml" = {}
-"~/.config/mise/config.toml" = {}
-"~/.local/state/gnupg/gpg-agent.conf" = {}
+"~/.gnupg" = { source = ".gnupg" }
+"~/.local/bin" = { source = ".local/bin" }
+"~/.config/gh" = { source = ".config/gh" }
+"~/.config/git" = { source = ".config/git" }
+"~/.config/npm" = { source = ".config/npm" }
+"~/.config/kitty" = { source = ".config/kitty" }
+"~/.config/fish" = { source = ".config/fish" }
+"~/.config/mise" = { source = ".config/mise" }
+"~/.config/ripgrep" = { source = ".config/ripgrep" }
+"~/.config/nvim" = { source = ".config/nvim", mode = "symlink" }
+"~/.config/starship.toml" = { source = ".config/starship.toml", mode = "symlink" }
 
 [bootstrap.user]
 login_shell = "/opt/homebrew/bin/fish"
+
+[bootstrap.macos.launchd.agents.mise-session-env]
+program = "~/.local/bin/test.sh"
+run_at_load = true

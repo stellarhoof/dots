@@ -7,7 +7,6 @@ later(function ()
   vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" }, { confirm = false })
   vim.lsp.enable({
     "emmylua_ls",
-    "nixd",
     "oxfmt",
     "oxlint",
     "tailwindcss",
