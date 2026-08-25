@@ -1,0 +1,9 @@
+[tools]
+claude-code = "latest"
+node = "latest"
+"npm:@vtsls/language-server" = "latest"
+pi = "latest"
+pnpm = "latest"
+python = "latest"
+rust = "latest"
+yarn = "latest"

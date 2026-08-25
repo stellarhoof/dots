@@ -1,10 +1,25 @@
 # Install homebrew first and use normally. Following are some useful commands:
 # - brew uninstall <formula_name>
 # - brew autoremove
+[bootstrap.brew]
+adopt = true
+
 [bootstrap.packages]
-"brew-cask:font-fira-code" = "latest"
-"brew-cask:kitty" = "latest"
+"brew-cask:balenaetcher" = "latest"
+"brew-cask:betterdisplay" = "latest"
 "brew-cask:brave-browser" = "latest"
+"brew-cask:calibre" = "latest"
+"brew-cask:docker-desktop" = "latest"
+"brew-cask:font-fira-code" = "latest"
+"brew-cask:handbrake-app" = "latest"
+"brew-cask:kitty" = "latest"
+"brew-cask:nordvpn" = "latest"
+"brew-cask:pritunl" = "latest"
+"brew-cask:redis-insight" = "latest"
+"brew-cask:slack" = "latest"
+"brew-cask:studio-3t" = "latest"
+"brew-cask:transmission" = "latest"
+"brew-cask:ungoogled-chromium" = "latest"
 "brew:ast-grep" = "latest"
 "brew:bfg" = "latest"
 "brew:coreutils" = "latest"
@@ -16,7 +31,6 @@
 "brew:fd" = "latest"
 "brew:findutils" = "latest"
 "brew:fish" = "latest"
-"brew:fzf" = "latest"
 "brew:gh" = "latest"
 "brew:git" = "latest"
 "brew:git-delta" = "latest"
@@ -24,13 +38,12 @@
 "brew:git-get" = "latest"
 "brew:git-lfs" = "latest"
 "brew:gnu-sed" = "latest"
-# "brew:gnupg" = "latest"
+"brew:gnupg" = "latest"
 "brew:grep" = "latest"
 "brew:htop" = "latest"
 "brew:hub" = "latest"
 "brew:jq" = "latest"
 "brew:less" = "latest"
-"brew:lndir" = "latest"
 "brew:neovim" = "latest"
 "brew:openssh" = "latest"
 "brew:pass" = "latest"
@@ -50,20 +63,9 @@
 "brew:worktrunk" = "latest"
 "brew:yt-dlp" = "latest"
 "brew:zoxide" = "latest"
-# "brew:killall" = "latest"
-
-[tools]
-claude-code = "latest"
-node = "latest"
-"npm:@vtsls/language-server" = "latest"
-pi = "latest"
-pnpm = "latest"
-python = "latest"
-rust = "latest"
-yarn = "latest"
 
 [settings]
-dotfiles.root = "~/Projects/github.com/stellarhoof/dots"
+dotfiles.root = "."
 
 [dotfiles]
 "~/.config/alacritty" = {}
@@ -74,6 +76,7 @@ dotfiles.root = "~/Projects/github.com/stellarhoof/dots"
 "~/.config/nvim" = {}
 "~/.config/ripgrep" = {}
 "~/.config/starship.toml" = {}
+"~/.config/mise/config.toml" = {}
 "~/.local/state/gnupg/gpg-agent.conf" = {}
 
 [bootstrap.user]

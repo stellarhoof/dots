@@ -24,9 +24,9 @@ set -gx NODE_REPL_MODE strict
 set -gx CARGO_HOME "$XDG_DATA_HOME/cargo"
 set -gx RUSTUP_HOME "$XDG_DATA_HOME/rustup"
 
-# docker
-set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
-set -gx MACHINE_STORAGE_PATH "$XDG_DATA_HOME/docker-machine"
+# # docker
+# set -gx DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
+# set -gx MACHINE_STORAGE_PATH "$XDG_DATA_HOME/docker-machine"
 
 # go
 set -gx GOPATH "$XDG_DATA_HOME"
@@ -62,11 +62,8 @@ set -gx REDISCLI_HISTFILE "$XDG_DATA_HOME/redis/rediscli_history"
 set -gx REDISCLI_RCFILE "$XDG_CONFIG_HOME/redis/redisclirc"
 set -gx RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgrep/ripgreprc"
 set -gx SQLITE_HISTORY "$XDG_CACHE_HOME/sqlite_history"
-set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore-vcs'
-set -gx FZF_DEFAULT_OPTS '--cycle --filepath-word --inline-info --reverse --pointer=\'*\' --preview=\'head -100 {}\' --preview-window=right:hidden --bind=ctrl-space:toggle-preview'
 
 status is-login; and begin
-    fish_add_path "$HOME/.docker/bin"
     switch (uname)
         case Darwin
             /opt/homebrew/bin/brew shellenv fish | source
@@ -81,8 +78,6 @@ status is-interactive; and begin
     starship init fish | source
 
     zoxide init fish | source
-
-    # set -gx GPG_TTY (tty)
 
     alias claude 'SHELL=/bin/bash command claude'
     alias cp 'cp -i'

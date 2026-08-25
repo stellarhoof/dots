@@ -6,4 +6,4 @@ vim.bo.shiftwidth = 0
 vim.bo.tabstop = 2
 
 vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = vim.treesitter.foldexpr
+-- vim.wo.foldexpr = vim.treesitter.foldexpr
