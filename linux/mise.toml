@@ -1,0 +1,33 @@
+[bootstrap.packages]
+"pacman:fish" = "latest"
+"pacman:ast-grep" = "latest"
+"pacman:duf" = "latest"
+"pacman:dua-cli" = "latest"
+"pacman:git-delta" = "latest"
+"pacman:git-filter-repo" = "latest"
+"pacman:git-lfs" = "latest"
+"pacman:htop" = "latest"
+"pacman:hub" = "latest"
+"pacman:pass" = "latest"
+"pacman:pass-otp" = "latest"
+"pacman:qrencode" = "latest"
+"pacman:7zip" = "latest"
+"pacman:shfmt" = "latest"
+"pacman:tailwindcss-language-server" = "latest"
+"pacman:tokei" = "latest"
+"pacman:trash-cli" = "latest"
+"pacman:wget" = "latest"
+"pacman:worktrunk" = "latest"
+
+[settings]
+dotfiles.default_mode = "symlink-each"
+
+[dotfiles]
+"~/.config" = { source = "../unix/.config", exclude = ["nvim"] }
+"~/.config/nvim" = { source = "../unix/.config/nvim", mode = "symlink" }
+"~/.config/fish" = { source = "./.config/fish" }
+"~/.config/kitty" = { source = "./.config/kitty" }
+"~/.config/mise" = { source = "./.config/mise" }
+
+[bootstrap.user]
+login_shell = "/usr/bin/fish"

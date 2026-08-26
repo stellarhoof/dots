@@ -59,7 +59,7 @@
 	smudge = "git-lfs smudge -- %f"
 
 [gitget]
-	root = "$XDG_PROJECTS_HOME"
+	root = "~/Projects"
 
 [grep]
 	extendRegexp = true

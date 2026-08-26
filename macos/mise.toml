@@ -68,9 +68,13 @@ adopt = true
 dotfiles.default_mode = "symlink-each"
 
 [dotfiles]
-"~/.gnupg" = { source = "macos/.gnupg" }
-"~/.local" = { source = "macos/.local" }
-"~/.config" = { source = "macos/.config" }
+"~/.gnupg" = { source = "./.gnupg" }
+"~/.local" = { source = "./.local" }
+"~/.config" = { source = "../unix/.config", exclude = ["nvim"] }
+"~/.config/nvim" = { source = "../unix/.config/nvim", mode = "symlink" }
+"~/.config/fish" = { source = "./.config/fish" }
+"~/.config/kitty" = { source = "./.config/kitty" }
+"~/.config/mise" = { source = "./.config/mise" }
 
 [bootstrap.user]
 login_shell = "/opt/homebrew/bin/fish"
