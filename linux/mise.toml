@@ -23,6 +23,7 @@
 dotfiles.default_mode = "symlink-each"
 
 [dotfiles]
+"~/.ssh" = { source = "./.ssh" }
 "~/.config" = { source = "../unix/.config", exclude = ["nvim"] }
 "~/.config/nvim" = { source = "../unix/.config/nvim", mode = "symlink" }
 "~/.config/fish" = { source = "./.config/fish" }

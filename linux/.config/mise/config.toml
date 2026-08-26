@@ -25,8 +25,11 @@ y = "yarn"
 # Listing
 ls = "eza -ah --group-directories-first --icons=auto"
 l = "ls -l"
-lt = "eza -h --tree --level=2 --icons=auto"
-lta = "lt -a"
+l1 = "ls -L1 -T -I .git"
+l2 = "l1 -L2"
+l3 = "l1 -L3"
+l4 = "l1 -L4"
+l5 = "l1 -L5"
 # Agents
 co = "SHELL=/bin/bash opencode --auto"
 cx = "SHELL=/bin/bash command claude --permission-mode bypassPermissions"
