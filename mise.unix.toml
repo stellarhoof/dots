@@ -1,3 +1,0 @@
-[dotfiles]
-"~/.config" = { source = "./unix/.config", mode = "symlink-each", exclude = ["nvim"] }
-"~/.config/nvim" = { source = "./unix/.config/nvim" }

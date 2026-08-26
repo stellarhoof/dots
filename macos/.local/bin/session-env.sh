@@ -6,4 +6,3 @@
 # launchctl setenv XDG_CONFIG_HOME "$HOME/.config"
 # launchctl setenv XDG_DATA_HOME "$HOME/.local/share"
 # launchctl setenv XDG_STATE_HOME "$HOME/.local/state"
-# launchctl setenv XDG_PROJECTS_HOME "$HOME/Projects"

@@ -1,7 +1,0 @@
-[bootstrap.packages]
-
-[dotfiles]
-"~/.config/*" = { source = "./linux/.config/*", mode = "symlink-each" }
-
-# [bootstrap.user]
-# login_shell = "/opt/homebrew/bin/fish"
