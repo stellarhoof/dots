@@ -64,11 +64,13 @@ adopt = true
 "brew:yt-dlp" = "latest"
 "brew:zoxide" = "latest"
 
+[settings]
+dotfiles.default_mode = "symlink-each"
+
 [dotfiles]
-"~/.gnupg" = { source = "home/.gnupg", mode = "symlink-each" }
-"~/.local" = { source = "home/.local", mode = "symlink-each" }
-"~/.config" = { source = "home/.config", mode = "symlink-each", exclude = ["nvim"] }
-"~/.config/nvim" = { source = "./home/.config/nvim" }
+"~/.gnupg" = { source = "macos/.gnupg" }
+"~/.local" = { source = "macos/.local" }
+"~/.config" = { source = "macos/.config" }
 
 [bootstrap.user]
 login_shell = "/opt/homebrew/bin/fish"
