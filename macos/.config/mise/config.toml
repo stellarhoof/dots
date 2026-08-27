@@ -1,15 +1,12 @@
 [tools]
+# Dev
 go = "latest"
+rust = "latest"
 node = "latest"
 python = "latest"
 # Agents
 pi = "latest"
 claude-code = "latest"
-
-# "npm:@vtsls/language-server" = "latest"
-# rust = "latest"
-# pnpm = "latest"
-# yarn = "latest"
 
 [shell_alias]
 cc = "SHELL=/bin/bash command claude"
@@ -17,7 +14,6 @@ cp = "cp -i"
 df = "duf"
 diff = "diff --color=auto"
 du = "dua"
-eza = "eza --icons --group-directories-first"
 g = "git"
 less = "moor"
 ls = "eza -ah --group-directories-first --icons=auto"
@@ -39,5 +35,4 @@ VISUAL = "nvim"
 PAGER = "moor"
 MANPAGER = "moor"
 MOOR = "--no-linenumbers --terminal-fg"
-GROFF_NO_SGR = 1
-PASSWORD_STORE_DIR = "~/Projects/github.com/stellarhoof/pass"
+PASSWORD_STORE_DIR = "$HOME/Projects/github.com/stellarhoof/pass"

@@ -1,13 +1,9 @@
 [tools]
-codex = "latest"
 go = "latest"
 node = "latest"
-pi = "latest"
 rust = "latest"
-
-# pnpm = "latest"
-# yarn = "latest"
-# "npm:@vtsls/language-server" = "latest"
+codex = "latest"
+pi = "latest"
 
 [shell_alias]
 # Programs
@@ -37,15 +33,13 @@ cx = "SHELL=/bin/bash command claude --permission-mode bypassPermissions"
 cy = "SHELL=/bin/bash command codex -s danger-full-access -a never"
 
 [env]
-# Default programs
 EDITOR = "nvim"
 VISUAL = "nvim"
 PAGER = "moor"
 MANPAGER = "moor"
 MOOR = "--no-linenumbers --terminal-fg"
 RIPGREP_CONFIG_PATH = "$XDG_CONFIG_HOME/ripgrep/ripgreprc"
-PASSWORD_STORE_DIR = "~/Projects/github.com/stellarhoof/pass"
-# Home declutter
+PASSWORD_STORE_DIR = "$HOME/Projects/github.com/stellarhoof/pass"
 # CARGO_HOME = "$XDG_DATA_HOME/cargo"
 # GOMODCACHE = "$XDG_CACHE_HOME/go/mod"
 # GOPATH = "$XDG_DATA_HOME/go"

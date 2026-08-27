@@ -1,3 +1,6 @@
+[settings]
+dotfiles.default_mode = "symlink-each"
+
 # Install homebrew first and use normally. Following are some useful commands:
 # - brew uninstall <formula_name>
 # - brew autoremove
@@ -44,7 +47,6 @@ adopt = true
 "brew:hub" = "latest"
 "brew:jq" = "latest"
 "brew:less" = "latest"
-"brew:neovim" = "latest"
 "brew:openssh" = "latest"
 "brew:pass" = "latest"
 "brew:pass-otp" = "latest"
@@ -64,21 +66,22 @@ adopt = true
 "brew:yt-dlp" = "latest"
 "brew:zoxide" = "latest"
 
-[settings]
-dotfiles.default_mode = "symlink-each"
+[bootstrap.repos]
+"~/Projects/github.com/stellarhoof/nvim" = { url = "https://github.com/stellarhoof/nvim.git" }
+"~/Projects/github.com/stellarhoof/pass" = { url = "https://github.com/stellarhoof/pass.git" }
 
 [dotfiles]
 "~/.gnupg" = { source = "./.gnupg" }
 "~/.local" = { source = "./.local" }
-"~/.config" = { source = "../unix/.config", exclude = ["nvim"] }
-"~/.config/nvim" = { source = "../unix/.config/nvim", mode = "symlink" }
+"~/.config" = { source = "../unix/.config" }
 "~/.config/fish" = { source = "./.config/fish" }
 "~/.config/kitty" = { source = "./.config/kitty" }
 "~/.config/mise" = { source = "./.config/mise" }
-
-[bootstrap.user]
-login_shell = "/opt/homebrew/bin/fish"
+"~/.config/nvim" = { source = "~/Projects/github.com/stellarhoof/nvim", mode = "symlink" }
 
 [bootstrap.macos.launchd.agents.session-env]
 program = "~/.local/bin/session-env.sh"
 run_at_load = true
+
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/fish"
