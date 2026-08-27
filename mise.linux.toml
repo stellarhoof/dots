@@ -1,0 +1,31 @@
+[env]
+SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+[bootstrap.packages]
+"pacman:7zip" = "latest"
+"pacman:ast-grep" = "latest"
+"pacman:dua-cli" = "latest"
+"pacman:duf" = "latest"
+"pacman:fish" = "latest"
+"pacman:git-delta" = "latest"
+"pacman:git-filter-repo" = "latest"
+"pacman:git-lfs" = "latest"
+"pacman:htop" = "latest"
+"pacman:hub" = "latest"
+"pacman:moor" = "latest"
+"pacman:pass" = "latest"
+"pacman:pass-otp" = "latest"
+"pacman:qrencode" = "latest"
+"pacman:shfmt" = "latest"
+"pacman:tailwindcss-language-server" = "latest"
+"pacman:tokei" = "latest"
+"pacman:trash-cli" = "latest"
+"pacman:ttf-fira-code" = "latest"
+"pacman:wget" = "latest"
+"pacman:worktrunk" = "latest"
+
+[dotfiles]
+"~/.config/kitty" = { source = "./linux/.config/kitty" }
+
+[bootstrap.user]
+login_shell = "/usr/bin/fish"

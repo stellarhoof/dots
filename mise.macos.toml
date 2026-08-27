@@ -1,6 +1,3 @@
-[settings]
-dotfiles.default_mode = "symlink-each"
-
 # Install homebrew first and use normally. Following are some useful commands:
 # - brew uninstall <formula_name>
 # - brew autoremove
@@ -47,10 +44,10 @@ adopt = true
 "brew:hub" = "latest"
 "brew:jq" = "latest"
 "brew:less" = "latest"
+"brew:moor" = "latest"
 "brew:openssh" = "latest"
 "brew:pass" = "latest"
 "brew:pass-otp" = "latest"
-"brew:pinentry-mac" = "latest"
 "brew:qrencode" = "latest"
 "brew:ripgrep" = "latest"
 "brew:sevenzip" = "latest"
@@ -66,20 +63,12 @@ adopt = true
 "brew:yt-dlp" = "latest"
 "brew:zoxide" = "latest"
 
-[bootstrap.repos]
-"~/Projects/github.com/stellarhoof/nvim" = { url = "https://github.com/stellarhoof/nvim.git" }
-"~/Projects/github.com/stellarhoof/pass" = { url = "https://github.com/stellarhoof/pass.git" }
-
 [dotfiles]
-"~/.gnupg" = { source = "./.gnupg" }
-"~/.local" = { source = "./.local" }
-"~/.config" = { source = "../unix/.config" }
-"~/.config/fish" = { source = "./.config/fish" }
-"~/.config/kitty" = { source = "./.config/kitty" }
-"~/.config/nvim" = { source = "~/Projects/github.com/stellarhoof/nvim", mode = "symlink" }
+"~/.local/bin" = { source = "./macos/.local/bin" }
+"~/.config/kitty" = { source = "./macos/.config/kitty" }
 
 [bootstrap.macos.launchd.agents.session-env]
-program = "~/.local/bin/session-env.sh"
+program = "$HOME/.local/bin/session-env.sh"
 run_at_load = true
 
 [bootstrap.user]

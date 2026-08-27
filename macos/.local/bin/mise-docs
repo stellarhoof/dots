@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# mise-docs — clone/update a local, searchable copy of the mise documentation.
+#
+# Uses a shallow, blob-less partial clone with a sparse checkout of docs/ only,
+# so the working copy is a few MB instead of the full ~100MB+ repo history.
+#
+# Location: $MISE_DOCS_DIR (default ~/.cache/mise-docs)
+# Usage:    mise-docs            # clone if missing, otherwise update
+set -euo pipefail
+
+DEST=${MISE_DOCS_DIR:-$HOME/.cache/mise-docs}
+URL=https://github.com/jdx/mise.git
+BRANCH=main
+
+mkdir -p "$(dirname "$DEST")"
+
+if [[ ! -d "$DEST/.git" ]]; then
+  git clone --depth 1 --no-tags --filter=blob:none --sparse "$URL" "$DEST" >/dev/null
+  git -C "$DEST" sparse-checkout set --cone docs
+else
+  git -C "$DEST" fetch --depth 1 --no-tags --filter=blob:none origin "$BRANCH"
+  git -C "$DEST" sparse-checkout set --cone docs
+  git -C "$DEST" reset --hard "origin/$BRANCH"
+fi
+
+echo "mise docs ready: $DEST/docs"

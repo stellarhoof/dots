@@ -1,34 +1,17 @@
 [settings]
 dotfiles.default_mode = "symlink-each"
 
-[bootstrap.packages]
-"pacman:7zip" = "latest"
-"pacman:ast-grep" = "latest"
-"pacman:dua-cli" = "latest"
-"pacman:duf" = "latest"
-"pacman:fish" = "latest"
-"pacman:git-delta" = "latest"
-"pacman:git-filter-repo" = "latest"
-"pacman:git-lfs" = "latest"
-"pacman:htop" = "latest"
-"pacman:hub" = "latest"
-"pacman:moor" = "latest"
-"pacman:pass" = "latest"
-"pacman:pass-otp" = "latest"
-"pacman:qrencode" = "latest"
-"pacman:shfmt" = "latest"
-"pacman:tailwindcss-language-server" = "latest"
-"pacman:tokei" = "latest"
-"pacman:trash-cli" = "latest"
-"pacman:ttf-fira-code" = "latest"
-"pacman:wget" = "latest"
-"pacman:worktrunk" = "latest"
-
 [bootstrap.repos]
 "~/Projects/github.com/stellarhoof/nvim" = { url = "https://github.com/stellarhoof/nvim.git" }
 "~/Projects/github.com/stellarhoof/pass" = { url = "https://github.com/stellarhoof/pass.git" }
 
-# [bootstrap.hooks.post-repos]
+[dotfiles]
+"~/.ssh" = { source = "./unix/.ssh" }
+"~/.gnupg" = { source = "./unix/.gnupg" }
+"~/.config" = { source = "./unix/.config" }
+"~/.config/nvim" = { source = "~/Projects/github.com/stellarhoof/nvim", mode = "symlink" }
+
+# [bootstrap.hooks.final]
 # run = [
 #   '''
 # # Change neovim's repo remote origin
@@ -53,13 +36,3 @@ dotfiles.default_mode = "symlink-each"
 # ssh-add ~/.ssh/github.com
 # ''',
 # ]
-
-[dotfiles]
-"~/.ssh" = { source = "./.ssh" }
-"~/.config" = { source = "../unix/.config" }
-"~/.config/fish" = { source = "./.config/fish" }
-"~/.config/kitty" = { source = "./.config/kitty" }
-"~/.config/nvim" = { source = "~/Projects/github.com/stellarhoof/nvim", mode = "symlink" }
-
-[bootstrap.user]
-login_shell = "/usr/bin/fish"
