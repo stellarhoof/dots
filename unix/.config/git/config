@@ -68,15 +68,15 @@
 [init]
 	defaultBranch = "master"
 
-[interactive]
-	diffFilter = "delta --color-only"
+; [interactive]
+; 	diffFilter = "delta --color-only"
 
 [pager]
-	blame = "delta"
+	; blame = "delta"
+	; diff = "delta"
+	; log = "delta"
+	; show = "delta"
 	branch = false
-	diff = "delta"
-	log = "delta"
-	show = "delta"
 	status = false
 
 [pull]

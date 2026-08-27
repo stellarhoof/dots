@@ -20,6 +20,7 @@ dotfiles.default_mode = "symlink-each"
 "pacman:tailwindcss-language-server" = "latest"
 "pacman:tokei" = "latest"
 "pacman:trash-cli" = "latest"
+"pacman:ttf-fira-code" = "latest"
 "pacman:wget" = "latest"
 "pacman:worktrunk" = "latest"
 
@@ -27,12 +28,37 @@ dotfiles.default_mode = "symlink-each"
 "~/Projects/github.com/stellarhoof/nvim" = { url = "https://github.com/stellarhoof/nvim.git" }
 "~/Projects/github.com/stellarhoof/pass" = { url = "https://github.com/stellarhoof/pass.git" }
 
+# [bootstrap.hooks.post-repos]
+# run = [
+#   '''
+# # Change neovim's repo remote origin
+# cd ~/Projects/github.com/stellarhoof/nvim
+# git remote set-url origin git@github.com:stellarhoof/nvim.git
+#
+# # Change pass's repo remote origin
+# cd ~/Projects/github.com/stellarhoof/pass
+# git remote set-url origin git@github.com:stellarhoof/pass.git
+#
+# # Import gpg key used to un-encrypt passwords
+# gpg --batch --import store-key.asc
+#
+# # Trust imported gpg key
+# fingerprint=$(gpg --batch --with-colons --fingerprint "azure.satellite@gmail.com" | awk -F: '/^fpr/{print $10; exit}')
+# echo "${fingerprint}:4:" | gpg --batch --import-ownertrust
+#
+# # Add github's SSH key to ssh agent
+# mkdir -p ~/.ssh
+# pass ssh/github.com > ~/.ssh/github.com
+# chmod 600 ~/.ssh/github.com
+# ssh-add ~/.ssh/github.com
+# ''',
+# ]
+
 [dotfiles]
 "~/.ssh" = { source = "./.ssh" }
 "~/.config" = { source = "../unix/.config" }
 "~/.config/fish" = { source = "./.config/fish" }
 "~/.config/kitty" = { source = "./.config/kitty" }
-"~/.config/mise" = { source = "./.config/mise" }
 "~/.config/nvim" = { source = "~/Projects/github.com/stellarhoof/nvim", mode = "symlink" }
 
 [bootstrap.user]

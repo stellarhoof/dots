@@ -1,10 +1,14 @@
 [tools]
+neovim = "nightly"
+# Dev
 go = "latest"
 node = "latest"
 rust = "latest"
-codex = "latest"
+oxfmt = "latest"
+# Agents
 pi = "latest"
-neovim = "nightly"
+codex = "latest"
+claude-code = "latest"
 
 [shell_alias]
 # Programs
@@ -21,7 +25,7 @@ rm = "echo 'Use trash-put instead!'"
 p = "pnpm"
 y = "yarn"
 # Listing
-ls = "eza -ah --group-directories-first --icons=auto"
+ls = "eza -ah --group-directories-first --icons=auto --color=always"
 l = "ls -l"
 l1 = "ls -L1 -T -I .git"
 l2 = "l1 -L2"
@@ -39,8 +43,9 @@ VISUAL = "nvim"
 PAGER = "moor"
 MANPAGER = "moor"
 MOOR = "--no-linenumbers --terminal-fg"
-RIPGREP_CONFIG_PATH = "$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+RIPGREP_CONFIG_PATH = "~/.config/ripgrep/ripgreprc"
 PASSWORD_STORE_DIR = "$HOME/Projects/github.com/stellarhoof/pass"
+SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
 # CARGO_HOME = "$XDG_DATA_HOME/cargo"
 # GOMODCACHE = "$XDG_CACHE_HOME/go/mod"
 # GOPATH = "$XDG_DATA_HOME/go"

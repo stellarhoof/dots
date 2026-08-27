@@ -76,7 +76,6 @@ adopt = true
 "~/.config" = { source = "../unix/.config" }
 "~/.config/fish" = { source = "./.config/fish" }
 "~/.config/kitty" = { source = "./.config/kitty" }
-"~/.config/mise" = { source = "./.config/mise" }
 "~/.config/nvim" = { source = "~/Projects/github.com/stellarhoof/nvim", mode = "symlink" }
 
 [bootstrap.macos.launchd.agents.session-env]
