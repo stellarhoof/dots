@@ -4,6 +4,7 @@ node = "latest"
 rust = "latest"
 codex = "latest"
 pi = "latest"
+neovim = "nightly"
 
 [shell_alias]
 # Programs
