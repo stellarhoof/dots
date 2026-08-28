@@ -25,7 +25,7 @@ SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
 "pacman:worktrunk" = "latest"
 
 [dotfiles]
-"~/.config/kitty" = { source = "./linux/.config/kitty" }
+"~/.config/foot" = { source = "./linux/.config/foot" }
 
 [bootstrap.user]
 login_shell = "/usr/bin/fish"
