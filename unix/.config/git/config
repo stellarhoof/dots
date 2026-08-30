@@ -1,3 +1,56 @@
+[core]
+	autocrlf = false
+	whitespace = cr-at-eol
+  pager = delta
+
+[blame]
+	date = relative
+
+[interactive]
+  diffFilter = delta --color-only
+
+[grep]
+	extendRegexp = true
+	lineNumber = true
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[user]
+	email = azure.satellite@gmail.com
+	name = Alejandro Hernandez
+
+# Color
+
+[color]
+	ui = true
+
+[color "branch"]
+	current = green bold
+	local = blue bold
+	plain = blue bold
+	remote = cyan bold
+	upstream = cyan bold
+
+[color "diff"]
+	meta = cyan bold
+
+[color "status"]
+	branch = blue bold # Branch name in header
+	added = green bold # Staged
+	changed = reset bold # Changed but not staged
+	untracked = red # Not tracked
+	localBranch = blue
+
+# Aliases
+
 [alias]
 	alias = "!git config --list | grep alias | cut -c 7-"
 	br = "branch -v"
@@ -13,33 +66,10 @@
 	ll = "log --pretty=format:'%C(yellow)%h %ad%Cred%d %Creset%s%Cblue [%cn]' --decorate --numstat"
 	st = "status"
 
-[blame]
-	date = "relative"
+# Tools
 
-[color]
-	ui = true
-
-[color "branch"]
-	current = "red"
-	local = "blue"
-	plain = "blue"
-	remote = "green"
-	upstream = "red"
-
-[color "diff"]
-	meta = "cyan bold"
-
-[color "status"]
-	added = "green"
-	branch = "blue"
-	changed = "blue"
-	header = "reset"
-	localBranch = "blue"
-	untracked = "red"
-
-[core]
-	autocrlf = false
-	whitespace = "cr-at-eol"
+[delta]
+  syntax-theme = none # Disable syntax highlighting
 
 [credential "https://gist.github.com"]
 	helper = ""
@@ -49,43 +79,11 @@
 	helper = ""
 	helper = "gh auth git-credential"
 
-[delta]
-	side-by-side = true
-
 [filter "lfs"]
-	clean = "git-lfs clean -- %f"
-	process = "git-lfs filter-process"
-	required = true
-	smudge = "git-lfs smudge -- %f"
+  clean = "git-lfs clean -- %f"
+  process = "git-lfs filter-process"
+  required = true
+  smudge = "git-lfs smudge -- %f"
 
 [gitget]
-	root = "~/Projects"
-
-[grep]
-	extendRegexp = true
-	lineNumber = true
-
-[init]
-	defaultBranch = "master"
-
-; [interactive]
-; 	diffFilter = "delta --color-only"
-
-[pager]
-	; blame = "delta"
-	; diff = "delta"
-	; log = "delta"
-	; show = "delta"
-	branch = false
-	status = false
-
-[pull]
-	rebase = false
-
-[push]
-	autoSetupRemote = true
-	default = "simple"
-
-[user]
-	email = "azure.satellite@gmail.com"
-	name = "Alejandro Hernandez"
+  root = ~/Projects
