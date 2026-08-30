@@ -31,6 +31,7 @@ adopt = true
 "brew:fd" = "latest"
 "brew:findutils" = "latest"
 "brew:fish" = "latest"
+"brew:fzf" = "latest"
 "brew:gh" = "latest"
 "brew:git" = "latest"
 "brew:git-delta" = "latest"
