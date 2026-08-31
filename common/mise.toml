@@ -6,9 +6,9 @@ dotfiles.default_mode = "symlink-each"
 "~/Projects/github.com/stellarhoof/pass" = { url = "https://github.com/stellarhoof/pass.git" }
 
 [dotfiles]
-"~/.ssh" = { source = "./unix/.ssh" }
-"~/.gnupg" = { source = "./unix/.gnupg" }
-"~/.config" = { source = "./unix/.config" }
+"~/.ssh" = { source = "./.ssh" }
+"~/.gnupg" = { source = "./.gnupg" }
+"~/.config" = { source = "./.config" }
 "~/.config/nvim" = { source = "~/Projects/github.com/stellarhoof/nvim", mode = "symlink" }
 
 # [bootstrap.hooks.final]

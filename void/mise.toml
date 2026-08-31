@@ -1,0 +1,35 @@
+[settings]
+dotfiles.default_mode = "symlink-each"
+
+[env]
+SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+[bootstrap.packages]
+"xbps:7zip" = "latest"
+"xbps:ast-grep" = "latest"
+"xbps:dua-cli" = "latest"
+"xbps:duf" = "latest"
+"xbps:fish" = "latest"
+"xbps:git" = "latest"
+"xbps:git-delta" = "latest"
+"xbps:git-filter-repo" = "latest"
+"xbps:git-lfs" = "latest"
+"xbps:htop" = "latest"
+"xbps:hub" = "latest"
+"xbps:moor" = "latest"
+"xbps:pass" = "latest"
+"xbps:pass-otp" = "latest"
+"xbps:qrencode" = "latest"
+"xbps:shfmt" = "latest"
+"xbps:tailwindcss-language-server" = "latest"
+"xbps:tokei" = "latest"
+"xbps:trash-cli" = "latest"
+"xbps:ttf-fira-code" = "latest"
+"xbps:wget" = "latest"
+"xbps:worktrunk" = "latest"
+
+[dotfiles]
+"~/.config/foot" = { source = "./.config/foot" }
+
+# [bootstrap.user]
+# login_shell = "/usr/bin/fish"

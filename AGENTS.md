@@ -1,9 +1,6 @@
 # Agent guide
 
-This repo is used to bootstrap macOS/Linux machines via mise. Config sources:
-
-- `unix/.config/**` — shared configs (mise, git, ripgrep, starship, …)
-- `macos/`, `linux/` — platform-specific config and `mise.toml`
+This repo is used to bootstrap macOS/Linux machines via mise.
 
 ## Searching the mise docs
 
@@ -28,4 +25,3 @@ cd /tmp && rm -rf mise-test && mkdir mise-test && cd mise-test
 # write a test config, then:
 mise trust && mise bootstrap repos/files apply --dry-run
 ```
-

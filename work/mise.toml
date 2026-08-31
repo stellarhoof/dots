@@ -1,3 +1,6 @@
+[settings]
+dotfiles.default_mode = "symlink-each"
+
 # Install homebrew first and use normally. Following are some useful commands:
 # - brew uninstall <formula_name>
 # - brew autoremove
@@ -65,8 +68,8 @@ adopt = true
 "brew:zoxide" = "latest"
 
 [dotfiles]
-"~/.local/bin" = { source = "./macos/.local/bin" }
-"~/.config/kitty" = { source = "./macos/.config/kitty" }
+"~/.local/bin" = { source = "./.local/bin" }
+"~/.config/kitty" = { source = "./.config/kitty" }
 
 [bootstrap.macos.launchd.agents.session-env]
 program = "$HOME/.local/bin/session-env.sh"

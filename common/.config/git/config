@@ -6,6 +6,9 @@
 [blame]
 	date = relative
 
+[pager]
+  branch = false
+
 [interactive]
   diffFilter = delta --color-only
 
