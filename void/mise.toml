@@ -2,34 +2,66 @@
 dotfiles.default_mode = "symlink-each"
 
 [env]
+TERMINAL = "foot"
 SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-[bootstrap.packages]
-"xbps:7zip" = "latest"
-"xbps:ast-grep" = "latest"
-"xbps:dua-cli" = "latest"
-"xbps:duf" = "latest"
-"xbps:fish" = "latest"
-"xbps:git" = "latest"
-"xbps:git-delta" = "latest"
-"xbps:git-filter-repo" = "latest"
-"xbps:git-lfs" = "latest"
-"xbps:htop" = "latest"
-"xbps:hub" = "latest"
-"xbps:moor" = "latest"
-"xbps:pass" = "latest"
-"xbps:pass-otp" = "latest"
-"xbps:qrencode" = "latest"
-"xbps:shfmt" = "latest"
-"xbps:tailwindcss-language-server" = "latest"
-"xbps:tokei" = "latest"
-"xbps:trash-cli" = "latest"
-"xbps:ttf-fira-code" = "latest"
-"xbps:wget" = "latest"
-"xbps:worktrunk" = "latest"
+[bootstrap.hooks.post-packages]
+# tailwindcss-language-server 
+# worktrunk
+# Remove lightdm, and sddm
+run = '''
+sudo xbps-install --yes \
+  7zip \
+  ast-grep \
+  dua-cli \
+  duf \
+  fish-shell \
+  git \
+  delta \
+  git-filter-repo \
+  git-lfs \
+  htop \
+  hub \
+  moor \
+  pass \
+  pass-otp \
+  qrencode \
+  shfmt \
+  tokei \
+  trash-cli \
+  font-firacode \
+  wget \
+  eza \
+  starship \
+  zoxide \
+  fzf \
+  fd \
+  foot \
+  ripgrep \
+  niri \
+  wl-clipboard \
+  xtools \
+  psmisc \
+  brave-browser \
+  brightnessctl \
+  fwupd \
+  upower
+
+# Services
+sudo xbps-install --yes \
+  greetd \
+  elogind
+'''
+
+[bootstrap.files."/etc/greetd/config.toml"]
+owner = "root"
+group = "root"
+mode = "644"
+source = "./etc/greetd/config.toml"
 
 [dotfiles]
 "~/.config/foot" = { source = "./.config/foot" }
+"~/.config/niri" = { source = "./.config/niri" }
 
-# [bootstrap.user]
-# login_shell = "/usr/bin/fish"
+[bootstrap.user]
+login_shell = "/usr/bin/fish"
