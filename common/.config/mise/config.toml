@@ -9,6 +9,7 @@ oxfmt = "latest"
 pi = "latest"
 codex = "latest"
 claude-code = "latest"
+"npm:@augmentcode/auggie" = "latest"
 
 [shell_alias]
 # Programs
