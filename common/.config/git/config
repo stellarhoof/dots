@@ -74,14 +74,6 @@
 [delta]
   syntax-theme = none # Disable syntax highlighting
 
-[credential "https://gist.github.com"]
-	helper = ""
-	helper = "gh auth git-credential"
-
-[credential "https://github.com"]
-	helper = ""
-	helper = "gh auth git-credential"
-
 [filter "lfs"]
   clean = "git-lfs clean -- %f"
   process = "git-lfs filter-process"

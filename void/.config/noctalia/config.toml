@@ -1,0 +1,7 @@
+[brightness]
+enable_ddcutil = true
+
+[theme.templates.user.nvim]
+input_path = "./nvim/matugen.lua"
+output_path = "$XDG_CONFIG_HOME/nvim/colors/matugen.lua"
+post_hook = 'pkill -SIGUSR1 nvim'

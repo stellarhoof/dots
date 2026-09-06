@@ -41,6 +41,7 @@ cy = "SHELL=/bin/bash command codex -s danger-full-access -a never"
 [env]
 EDITOR = "nvim"
 VISUAL = "nvim"
+SUDO_EDITOR = "nvim"
 PAGER = "moor"
 MANPAGER = "moor"
 MOOR = "--no-linenumbers --terminal-fg"

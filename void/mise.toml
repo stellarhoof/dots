@@ -5,53 +5,60 @@ dotfiles.default_mode = "symlink-each"
 TERMINAL = "foot"
 SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
 
-[bootstrap.hooks.post-packages]
-# tailwindcss-language-server 
-# worktrunk
-# Remove lightdm, and sddm
-run = '''
-sudo xbps-install --yes \
-  7zip \
-  ast-grep \
-  dua-cli \
-  duf \
-  fish-shell \
-  git \
-  delta \
-  git-filter-repo \
-  git-lfs \
-  htop \
-  hub \
-  moor \
-  pass \
-  pass-otp \
-  qrencode \
-  shfmt \
-  tokei \
-  trash-cli \
-  font-firacode \
-  wget \
-  eza \
-  starship \
-  zoxide \
-  fzf \
-  fd \
-  foot \
-  ripgrep \
-  niri \
-  wl-clipboard \
-  xtools \
-  psmisc \
-  brave-browser \
-  brightnessctl \
-  fwupd \
-  upower
-
-# Services
-sudo xbps-install --yes \
-  greetd \
-  elogind
-'''
+# [bootstrap.hooks.post-packages]
+# # tailwindcss-language-server 
+# # worktrunk
+# # Remove lightdm, and sddm
+# run = '''
+# sudo xbps-install --yes \
+#   7zip \
+#   ast-grep \
+#   dua-cli \
+#   duf \
+#   fish-shell \
+#   git \
+#   github-cli \
+#   delta \
+#   git-filter-repo \
+#   git-lfs \
+#   htop \
+#   hub \
+#   moor \
+#   pass \
+#   pass-otp \
+#   qrencode \
+#   shfmt \
+#   tokei \
+#   trash-cli \
+#   font-firacode \
+#   wget \
+#   eza \
+#   starship \
+#   zoxide \
+#   fzf \
+#   fd \
+#   foot \
+#   ripgrep \
+#   niri \
+#   wl-clipboard \
+#   xtools \
+#   psmisc \
+#   brave-browser \
+#   fwupd \
+#   ddcutil \
+#   pipewire \
+#   upower \
+#   powertop \
+#   power-profiles-daemon \
+#   socklog-void \ // syslog daemon and configuration
+#   libatomic \ // required by rust
+#   framework-system
+#
+# # Services
+# sudo xbps-install --yes \
+#   greetd \
+#   elogind
+# '''
 
 [bootstrap.files."/etc/greetd/config.toml"]
 owner = "root"
@@ -59,9 +66,36 @@ group = "root"
 mode = "644"
 source = "./etc/greetd/config.toml"
 
+# Dependency of ddcutil
+[bootstrap.files."/etc/modules-load.d/i2c-dev.conf"]
+owner = "root"
+group = "root"
+mode = "644"
+content = "i2c-dev"
+
+[bootstrap.directories."/usr/local/share/wayland-sessions"]
+owner = "root"
+group = "root"
+mode = "755"
+
+# Start niri wrapped in dbus-run-session since we don't use systemd
+[bootstrap.files."/usr/local/share/wayland-sessions/niri.desktop"]
+owner = "root"
+group = "root"
+mode = "644"
+content = '''
+[Desktop Entry]
+Name=Niri
+Comment=A scrollable-tiling Wayland compositor
+Exec=dbus-run-session niri --session
+Type=Application
+DesktopNames=niri
+'''
+
 [dotfiles]
 "~/.config/foot" = { source = "./.config/foot" }
 "~/.config/niri" = { source = "./.config/niri" }
+"~/.config/noctalia" = { source = "./.config/noctalia" }
 
 [bootstrap.user]
 login_shell = "/usr/bin/fish"
