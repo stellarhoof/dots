@@ -1,13 +1,12 @@
 ```sh
-# Update packages and system
-sudo xbps-install -Suv
-
-# Enable repository for non-free packages
+# Add repository for non-free packages
 sudo xbps-install void-repo-nonfree
 
-# Install noctalia
+# Add repository for noctalia
 echo "repository=https://repo.voiders.dev" | sudo tee /etc/xbps.d/10-voiders-community.conf
-sudo xbps-install -S noctalia noctalia-greeter
+
+# Synchronize remote repository index files and update system
+sudo xbps-install -Su
 
 # Install mise (needs git)
 sudo xbps-install git mise
@@ -35,6 +34,7 @@ sudo usermod -a -G socklog ah
 
 Parameters passed to the kernel during boot: `cat /proc/cmdline`
 Configure kernel parameters at runtime: `sysctl`
+Add kernel parameters for next boot: modify `GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub`
 Show status of kernel modules: `lsmod`
 Add and remove modules from the kernel: `modprobe`
 Inspect system logs: `svlogtail [service]`

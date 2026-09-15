@@ -1,12 +1,8 @@
 [settings]
 dotfiles.default_mode = "symlink-each"
 
-[env]
-TERMINAL = "foot"
-SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
-
 # [bootstrap.hooks.post-packages]
-# # tailwindcss-language-server 
+# # tailwindcss-language-server
 # # worktrunk
 # # Remove lightdm, and sddm
 # run = '''
@@ -26,6 +22,7 @@ SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
 #   moor \
 #   pass \
 #   pass-otp \
+#   gopass \
 #   qrencode \
 #   shfmt \
 #   tokei \
@@ -52,7 +49,19 @@ SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
 #   power-profiles-daemon \
 #   socklog-void \ // syslog daemon and configuration
 #   libatomic \ // required by rust
-#   framework-system
+#   framework-system \
+#   noctalia \
+#   noctalia-greeter \
+#   noto-fonts-ttf \
+#   noto-fonts-emoji \
+#   nerd-fonts-symbols-ttf \
+#   mpv \
+#   mesa-vaapi \ // MESA VA-API (video acceleration API) driver
+#   qt5-wayland \ // Needed for QT5 apps under wayland
+#   yt-dlp \
+#   xdg-desktop-portal \
+#   xdg-desktop-portal-gtk \
+#   hyprcursor \
 #
 # # Services
 # sudo xbps-install --yes \
@@ -64,7 +73,20 @@ SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent.socket"
 owner = "root"
 group = "root"
 mode = "644"
-source = "./etc/greetd/config.toml"
+content = '''
+[terminal]
+# The VT to run the greeter on.
+vt = 7
+
+# The default session, also known as the greeter.
+[default_session]
+command = "/usr/sbin/noctalia-greeter-session"
+
+# The user to run the command as. The privileges this user must have depends
+# on the greeter. A graphical greeter may for example require the user to be
+# in the `video` group.
+user = "ah"
+'''
 
 # Dependency of ddcutil
 [bootstrap.files."/etc/modules-load.d/i2c-dev.conf"]
@@ -86,11 +108,16 @@ mode = "644"
 content = '''
 [Desktop Entry]
 Name=Niri
-Comment=A scrollable-tiling Wayland compositor
-Exec=dbus-run-session niri --session
 Type=Application
 DesktopNames=niri
+Exec=dbus-run-session niri --session
 '''
+
+# https://www.januschka.com/chromium-omarchy.html
+[bootstrap.directories."/etc/brave/policies/managed"]
+owner = "ah"
+group = "ah"
+mode = "755"
 
 [dotfiles]
 "~/.config/foot" = { source = "./.config/foot" }

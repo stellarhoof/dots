@@ -1,7 +1,23 @@
 [brightness]
 enable_ddcutil = true
 
+[shell]
+# A polkit agent is a process responsible for authenticating the current user
+# when a graphical application requests elevated privileges through the Polkit
+# authorization framework.
+polkit_agent = true
+
 [theme.templates.user.nvim]
 input_path = "./nvim/matugen.lua"
-output_path = "$XDG_CONFIG_HOME/nvim/colors/matugen.lua"
-post_hook = 'pkill -SIGUSR1 nvim'
+output_path = "~/.config/nvim/colors/matugen.lua"
+post_hook = 'pkill -SIGUSR1 nvim || true'
+
+[theme.templates.user.brave]
+input_path = "./brave/classic-theme.json"
+output_path = "/etc/brave/policies/managed/classic-theme.json"
+post_hook = "brave --refresh-platform-policy --no-startup-window"
+
+[theme.templates.user.terminal-sequences]
+input_path = "./terminal-sequences"
+output_path = "~/.cache/terminal-sequences"
+post_hook = "tee /dev/pts/[0-9]* < ~/.cache/terminal-sequences"

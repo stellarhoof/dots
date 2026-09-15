@@ -27,11 +27,4 @@ require('mini.base16').setup({
   -- },
 })
 
--- Register a signal handler for SIGUSR1 (matugen updates)
-local signal = vim.uv.new_signal()
-signal:start('sigusr1', vim.schedule_wrap(function()
-  package.loaded['matugen'] = nil
-  require('matugen').setup()
-end))
-
 vim.g.colors_name = 'matugen'

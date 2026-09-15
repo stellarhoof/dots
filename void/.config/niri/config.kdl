@@ -114,7 +114,7 @@ binds {
   XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
 
   Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
-  Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
+  Mod+S { spawn-sh "noctalia msg theme-mode-toggle"; }
   Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
   Alt+Tab { spawn-sh "noctalia msg window-switcher"; }
 
@@ -302,4 +302,10 @@ binds {
   // Powers off the monitors. To turn them back on, do any input like
   // moving the mouse or pressing any other key.
   Mod+Shift+P { power-off-monitors; }
+}
+
+window-rule {
+  match app-id="brave-browser"
+  scroll-factor 0.1
+  open-maximized true
 }
