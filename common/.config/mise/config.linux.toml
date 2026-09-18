@@ -1,6 +1,5 @@
 [env]
 TERMINAL = "foot"
-SSH_AUTH_SOCK = "${XDG_RUNTIME_DIR:-}/ssh-agent.socket"
 # Style Qt applications via a configuration tool.
 # TODO: Install qtengine in void.
 QT_QPA_PLATFORMTHEME = "qtengine"

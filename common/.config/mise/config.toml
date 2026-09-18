@@ -27,7 +27,7 @@ vi = "nvim"
 p = "pnpm"
 y = "yarn"
 # Listing
-ls = "eza -ah --group-directories-first --icons=auto --color=always"
+ls = "eza -ahg --group-directories-first --icons=auto --color=always"
 l = "ls -l"
 l1 = "ls -L1 -T -I .git"
 l2 = "l1 -L2"

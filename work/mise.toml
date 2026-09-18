@@ -69,6 +69,7 @@ adopt = true
 
 [dotfiles]
 "~/.local/bin" = { source = "./.local/bin" }
+"~/.config/fish" = { source = "./.config/fish" }
 "~/.config/kitty" = { source = "./.config/kitty" }
 
 [bootstrap.macos.launchd.agents.session-env]

@@ -1,73 +1,6 @@
 [settings]
 dotfiles.default_mode = "symlink-each"
 
-[bootstrap.hooks.post-packages]
-# tailwindcss-language-server
-# worktrunk
-run = '''
-sudo xbps-install --yes \
-  7zip \
-  ast-grep \
-  dua-cli \
-  duf \
-  fish-shell \
-  curl \
-  git \
-  github-cli \
-  delta \
-  git-filter-repo \
-  git-lfs \
-  htop \
-  hub \
-  moor \
-  pass \
-  pass-otp \
-  gopass \
-  qrencode \
-  shfmt \
-  tokei \
-  trash-cli \
-  font-firacode \
-  wget \
-  eza \
-  starship \
-  zoxide \
-  fzf \
-  fd \
-  foot \
-  ripgrep \
-  niri \
-  wl-clipboard \
-  xtools \
-  psmisc \
-  brave-browser \
-  fwupd \
-  ddcutil \
-  pipewire \
-  upower \
-  powertop \
-  power-profiles-daemon \
-  socklog-void \
-  libatomic \
-  framework-system \
-  noctalia \
-  noctalia-greeter \
-  noto-fonts-ttf \
-  noto-fonts-emoji \
-  nerd-fonts-symbols-ttf \
-  mpv \
-  mesa \
-  mesa-vaapi \
-  qt5-wayland \
-  yt-dlp \
-  xdg-desktop-portal \
-  xdg-desktop-portal-gtk \
-  hyprcursor \
-  bind-utils \
-  elogind \
-  greetd
-'''
-
 [bootstrap.files."/etc/greetd/config.toml"]
 owner = "root"
 group = "root"
@@ -114,21 +47,31 @@ Exec=dbus-run-session niri --session
 
 # https://www.januschka.com/chromium-omarchy.html
 [bootstrap.directories."/etc/brave"]
-owner = "ah"
-group = "ah"
+owner = "root"
+group = "root"
 mode = "755"
 
 # https://www.januschka.com/chromium-omarchy.html
 [bootstrap.directories."/etc/brave/policies"]
-owner = "ah"
-group = "ah"
+owner = "root"
+group = "root"
 mode = "755"
 
 # https://www.januschka.com/chromium-omarchy.html
 [bootstrap.directories."/etc/brave/policies/managed"]
-owner = "ah"
-group = "ah"
+owner = "root"
+group = "root"
 mode = "755"
+
+[bootstrap.files."/etc/iwd/main.conf"]
+owner = "root"
+group = "root"
+mode = "644"
+content = '''
+[General]
+# Use iwd's internal dhcp client
+EnableNetworkConfiguration=true
+'''
 
 # [bootstrap.directories."/etc/NetworkManager/conf.d"]
 # owner = "root"
@@ -146,6 +89,7 @@ mode = "755"
 # '''
 
 [dotfiles]
+"~/.config/fish" = { source = "./.config/fish" }
 "~/.config/foot" = { source = "./.config/foot" }
 "~/.config/niri" = { source = "./.config/niri" }
 "~/.config/noctalia" = { source = "./.config/noctalia" }
