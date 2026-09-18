@@ -53,7 +53,7 @@ spawn-at-startup "pipewire"
 
 spawn-at-startup "noctalia"
 // Noctalia generated colors
-include "noctalia.kdl"
+include "matugen.kdl"
 
 // Ask clients to omit client-side decorations if possible.
 prefer-no-csd
@@ -113,6 +113,7 @@ binds {
   XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
   XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
 
+  Mod+Escape { spawn-sh "noctalia msg panel-toggle session"; }
   Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
   Mod+S { spawn-sh "noctalia msg theme-mode-toggle"; }
   Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
@@ -285,15 +286,15 @@ binds {
   Ctrl+Print { screenshot-screen; }
   Alt+Print { screenshot-window; }
 
-  // Applications such as remote-desktop clients and software KVM switches may
-  // request that niri stops processing the keyboard shortcuts defined here
-  // so they may, for example, forward the key presses as-is to a remote machine.
-  // It's a good idea to bind an escape hatch to toggle the inhibitor,
-  // so a buggy application can't hold your session hostage.
-  //
-  // The allow-inhibiting=false property can be applied to other binds as well,
-  // which ensures niri always processes them, even when an inhibitor is active.
-  Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+  // // Applications such as remote-desktop clients and software KVM switches may
+  // // request that niri stops processing the keyboard shortcuts defined here
+  // // so they may, for example, forward the key presses as-is to a remote machine.
+  // // It's a good idea to bind an escape hatch to toggle the inhibitor,
+  // // so a buggy application can't hold your session hostage.
+  // //
+  // // The allow-inhibiting=false property can be applied to other binds as well,
+  // // which ensures niri always processes them, even when an inhibitor is active.
+  // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
   // The quit action will show a confirmation dialog to avoid accidental exits.
   Mod+Shift+E { quit; }
@@ -309,3 +310,4 @@ window-rule {
   scroll-factor 0.1
   open-maximized true
 }
+
