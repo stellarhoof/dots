@@ -69,8 +69,26 @@ group = "root"
 mode = "644"
 content = '''
 [General]
-# Use iwd's internal dhcp client
+# Use iwd's internal DHCP client
 EnableNetworkConfiguration=true
+
+[Scan]
+# Scan manually via `iwctl station [name] scan`
+# Get `name` with `iwctl device list`
+DisablePeriodicScan=true
+
+[Network]
+# Do not publish DHCP provided DNS servers; we'll manage DNS servers manually
+NameResolvingService=none
+'''
+
+[bootstrap.files."/etc/resolvconf.conf"]
+owner = "root"
+group = "root"
+mode = "644"
+content = '''
+# Cloudflare DNS servers. They're appended to allow DNS servers from VPNs to take precedence.
+name_servers_append="1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001"
 '''
 
 # [bootstrap.directories."/etc/NetworkManager/conf.d"]

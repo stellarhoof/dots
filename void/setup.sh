@@ -82,9 +82,6 @@ sudo xbps-install -y \
   iwd \
   zoxide
 
-# Update man pages
-sudo makewhatis /usr/share/man
-
 # Services
 
 # Synchronizes system clock with NTP servers
@@ -100,6 +97,12 @@ sudo ln -s /etc/sv/dbus /var/service
 sudo ln -s /etc/sv/greetd /var/service/
 # WiFi connection manager
 sudo ln -s /etc/sv/iwd /var/service
+
+# Connect to the internet
+# iwctl station wlp1s0 connect [SSID]
+
+# Update man pages
+sudo makewhatis /usr/share/man
 
 # Reboot machine since the kernel was probably updated.
 sudo reboot now
