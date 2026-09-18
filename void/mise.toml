@@ -1,74 +1,72 @@
 [settings]
 dotfiles.default_mode = "symlink-each"
 
-# [bootstrap.hooks.post-packages]
-# # tailwindcss-language-server
-# # worktrunk
-# # Remove lightdm, and sddm
-# run = '''
-# sudo xbps-install --yes \
-#   7zip \
-#   ast-grep \
-#   dua-cli \
-#   duf \
-#   fish-shell \
-#   git \
-#   github-cli \
-#   delta \
-#   git-filter-repo \
-#   git-lfs \
-#   htop \
-#   hub \
-#   moor \
-#   pass \
-#   pass-otp \
-#   gopass \
-#   qrencode \
-#   shfmt \
-#   tokei \
-#   trash-cli \
-#   font-firacode \
-#   wget \
-#   eza \
-#   starship \
-#   zoxide \
-#   fzf \
-#   fd \
-#   foot \
-#   ripgrep \
-#   niri \
-#   wl-clipboard \
-#   xtools \
-#   psmisc \
-#   brave-browser \
-#   fwupd \
-#   ddcutil \
-#   pipewire \
-#   upower \
-#   powertop \
-#   power-profiles-daemon \
-#   socklog-void \ // syslog daemon and configuration
-#   libatomic \ // required by rust
-#   framework-system \
-#   noctalia \
-#   noctalia-greeter \
-#   noto-fonts-ttf \
-#   noto-fonts-emoji \
-#   nerd-fonts-symbols-ttf \
-#   mpv \
-#   mesa-vaapi \ // MESA VA-API (video acceleration API) driver
-#   qt5-wayland \ // Needed for QT5 apps under wayland
-#   yt-dlp \
-#   xdg-desktop-portal \
-#   xdg-desktop-portal-gtk \
-#   hyprcursor \
-#   bind-utils \
-#
-# # Services
-# sudo xbps-install --yes \
-#   greetd \
-#   elogind
-# '''
+[bootstrap.hooks.post-packages]
+# tailwindcss-language-server
+# worktrunk
+run = '''
+sudo xbps-install --yes \
+  7zip \
+  ast-grep \
+  dua-cli \
+  duf \
+  fish-shell \
+  curl \
+  git \
+  github-cli \
+  delta \
+  git-filter-repo \
+  git-lfs \
+  htop \
+  hub \
+  moor \
+  pass \
+  pass-otp \
+  gopass \
+  qrencode \
+  shfmt \
+  tokei \
+  trash-cli \
+  font-firacode \
+  wget \
+  eza \
+  starship \
+  zoxide \
+  fzf \
+  fd \
+  foot \
+  ripgrep \
+  niri \
+  wl-clipboard \
+  xtools \
+  psmisc \
+  brave-browser \
+  fwupd \
+  ddcutil \
+  pipewire \
+  upower \
+  powertop \
+  power-profiles-daemon \
+  socklog-void \
+  libatomic \
+  framework-system \
+  noctalia \
+  noctalia-greeter \
+  noto-fonts-ttf \
+  noto-fonts-emoji \
+  nerd-fonts-symbols-ttf \
+  mpv \
+  mesa \
+  mesa-vaapi \
+  qt5-wayland \
+  yt-dlp \
+  xdg-desktop-portal \
+  xdg-desktop-portal-gtk \
+  hyprcursor \
+  bind-utils \
+  elogind \
+  greetd
+'''
 
 [bootstrap.files."/etc/greetd/config.toml"]
 owner = "root"
@@ -81,12 +79,12 @@ vt = 7
 
 # The default session, also known as the greeter.
 [default_session]
-command = "/usr/sbin/noctalia-greeter-session"
+command = "tuigreet"
 
 # The user to run the command as. The privileges this user must have depends
 # on the greeter. A graphical greeter may for example require the user to be
 # in the `video` group.
-user = "ah"
+user = "_greeter"
 '''
 
 # Dependency of ddcutil
@@ -108,11 +106,23 @@ group = "root"
 mode = "644"
 content = '''
 [Desktop Entry]
-Name=Niri
+Name=Niri (with dbus)
 Type=Application
 DesktopNames=niri
 Exec=dbus-run-session niri --session
 '''
+
+# https://www.januschka.com/chromium-omarchy.html
+[bootstrap.directories."/etc/brave"]
+owner = "ah"
+group = "ah"
+mode = "755"
+
+# https://www.januschka.com/chromium-omarchy.html
+[bootstrap.directories."/etc/brave/policies"]
+owner = "ah"
+group = "ah"
+mode = "755"
 
 # https://www.januschka.com/chromium-omarchy.html
 [bootstrap.directories."/etc/brave/policies/managed"]
@@ -120,20 +130,20 @@ owner = "ah"
 group = "ah"
 mode = "755"
 
-[bootstrap.directories."/etc/NetworkManager/conf.d"]
-owner = "root"
-group = "root"
-mode = "755"
+# [bootstrap.directories."/etc/NetworkManager/conf.d"]
+# owner = "root"
+# group = "root"
+# mode = "755"
 
-# Use cloudflare's DNS servers for all connections
-[bootstrap.files."/etc/NetworkManager/conf.d/00-global-dns.conf"]
-owner = "root"
-group = "root"
-mode = "644"
-content = '''
-[global-dns-domain-*]
-servers=1.1.1.1,1.0.0.1,2606:4700:4700::1111,2606:4700:4700::1001
-'''
+# # Use cloudflare's DNS servers for all connections
+# [bootstrap.files."/etc/NetworkManager/conf.d/00-global-dns.conf"]
+# owner = "root"
+# group = "root"
+# mode = "644"
+# content = '''
+# [global-dns-domain-*]
+# servers=1.1.1.1,1.0.0.1,2606:4700:4700::1111,2606:4700:4700::1001
+# '''
 
 [dotfiles]
 "~/.config/foot" = { source = "./.config/foot" }
