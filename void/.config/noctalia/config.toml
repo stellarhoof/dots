@@ -1,71 +1,223 @@
-[brightness]
-enable_ddcutil = true
-
-[audio]
-enable_sounds = true
-
-[shell]
-# A polkit agent is a process responsible for authenticating the current user
-# when a graphical application requests elevated privileges through the Polkit
-# authorization framework.
-polkit_agent = true
-app_icon_colorize = true
-app_icon_color = "primary"
-
-[widget.clock]
-format = "%a | %I:%M %p"
-
-[shell.animation]
-speed = 3.0
-
-# [idle]
-# behavior_order = ["lock", "screen-off", "lock-and-suspend"]
-
-# [idle.behavior.lock]
-# action = "lock"
-# enabled = true
-# timeout = 200.0
-
-# [idle.behavior.screen-off]
-# action = "screen_off"
-# enabled = true
-# timeout = 400.0
-
-# [idle.behavior.lock-and-suspend]
-# action = "lock_and_suspend"
-# enabled = true
-# timeout = 600.0
-
-[wallpaper]
-directory = "/home/ah/Pictures/Wallpapers"
-
-[theme]
-community_palette = "Espresso Cream"
-wallpaper_scheme = "faithful"
+# Theming
 
 [theme.templates]
 enable_builtin_templates = false
 enable_community_templates = false
-
-[theme.templates.user.niri]
-input_path = "./niri/matugen.kdl"
-output_path = "~/.config/niri/matugen.kdl"
-
-[theme.templates.user.foot]
-input_path = "./foot/matugen.ini"
-output_path = "~/.config/foot/matugen.ini"
-
-[theme.templates.user.nvim]
-input_path = "./nvim/matugen.lua"
-output_path = "~/.config/nvim/colors/matugen.lua"
-post_hook = 'pkill -SIGUSR1 nvim || true'
 
 [theme.templates.user.brave]
 input_path = "./brave/classic-theme.json"
 output_path = "/etc/brave/policies/managed/classic-theme.json"
 post_hook = "brave --refresh-platform-policy --no-startup-window"
 
+[theme.templates.user.foot]
+input_path = "./foot/matugen.ini"
+output_path = "~/.config/foot/matugen.ini"
+
+[theme.templates.user.niri]
+input_path = "./niri/matugen.kdl"
+output_path = "~/.config/niri/matugen.kdl"
+
+[theme.templates.user.nvim]
+input_path = "./nvim/matugen.lua"
+output_path = "~/.config/nvim/colors/matugen.lua"
+post_hook = "pkill -SIGUSR1 nvim || true"
+
 [theme.templates.user.terminal-sequences]
 input_path = "./terminal-sequences"
 output_path = "~/.cache/terminal-sequences"
 post_hook = "tee /dev/pts/[0-9]* < ~/.cache/terminal-sequences"
+
+# Rest
+
+[audio]
+enable_sounds = true
+
+[bar.default]
+border_width = 1.0
+capsule_thickness = 0.6
+center = []
+concave_edge_corners = false
+end = [
+  "clipboard",
+  "bluetooth",
+  "volume",
+  "battery",
+  "network",
+  "clock",
+  "notifications",
+  "session",
+]
+font_family = "Noto Sans"
+font_scale = 0.95
+font_weight = 700
+icon_color = "primary"
+margin_ends = 0
+position = "bottom"
+radius = 0
+start = ["control-center", "workspaces", "taskbar"]
+thickness = 35
+widget_spacing = 14
+
+[brightness]
+enable_ddcutil = true
+
+[control_center]
+sidebar = "full"
+sidebar_section = "none"
+width = 900
+
+[desktop_widgets]
+enabled = false
+
+[idle]
+behavior_order = ["lock", "screen-off", "lock-and-suspend"]
+
+[idle.behavior.lock]
+action = "lock"
+enabled = true
+timeout = 200.0
+
+[idle.behavior.lock-and-suspend]
+action = "lock_and_suspend"
+enabled = true
+timeout = 600.0
+
+[idle.behavior.screen-off]
+action = "screen_off"
+enabled = true
+timeout = 400.0
+
+[location]
+address = "Miami, United States"
+
+[lockscreen]
+blurred_desktop = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = ["lockscreen-login-box@DP-7", "lockscreen-login-box@eDP-1"]
+
+[lockscreen_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@DP-7"]
+box_height = 196.0
+box_width = 810.0
+cx = 960.0
+cy = 898.0
+output = "DP-7"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "login_box"
+
+[lockscreen_widgets.widget."lockscreen-login-box@DP-7".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_session_buttons = true
+show_unlock_hint = true
+show_weather = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+box_height = 196.0
+box_width = 810.0
+cx = 720.0
+cy = 514.0
+output = "eDP-1"
+placement_height = 960.0
+placement_width = 1440.0
+rotation = 0.0
+type = "login_box"
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+center_password_text = false
+input_opacity = 1.0
+input_radius = 6.0
+layout = "regular"
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_media = true
+show_session_buttons = true
+show_unlock_hint = false
+show_weather = true
+
+[nightlight]
+enabled = true
+temperature_night = 5000
+
+[plugin_settings."noctalia/wallhaven"]
+browser_placement = "floating"
+browser_position = "center"
+
+[plugins]
+enabled = ["noctalia/wallhaven"]
+
+[shell]
+app_icon_color = "primary"
+app_icon_colorize = true
+corner_radius_scale = 2.0
+panel_anchor_bar = "default"
+polkit_agent = true
+
+[shell.animation]
+speed = 3.0
+
+[shell.panel]
+clipboard_position = "auto"
+control_center_placement = "floating"
+open_near_click_clipboard = true
+open_near_click_control_center = true
+open_near_click_session = true
+session_placement = "floating"
+
+[shell.session]
+grid = true
+grid_columns = 1
+
+[theme]
+builtin = "Tokyo-Night"
+community_palette = "Monochrome"
+mode = "dark"
+source = "community"
+wallpaper_scheme = "faithful"
+
+[wallpaper]
+directory = "/home/ah/Pictures/Wallpapers"
+
+[widget.battery]
+label_content = "time"
+
+[widget.clock]
+format = "%I:%M %p"
+
+[widget.control-center]
+icon_color = "primary"
+scale = 1.2
+
+[widget.notifications]
+hide_when_no_unread = true
+
+[widget.taskbar]
+hide_empty_workspaces = true
+item_spacing = 10
+only_active_workspace = true
+show_window_title = true
+
+[widget.volume]
+show_label = false

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Don't select any service after installing the base image
+# NOTE: Don't select any service after installing the base image
 
 # Update xbps
 sudo xbps-install -yu xbps
@@ -101,16 +101,12 @@ sudo ln -s /etc/sv/iwd /var/service
 # Connect to the internet
 # iwctl station wlp1s0 connect [SSID]
 
+# Enable pipewire's session manager
+sudo mkdir -p /etc/pipewire/pipewire.conf.d
+sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+
 # Update man pages
 sudo makewhatis /usr/share/man
 
 # Reboot machine since the kernel was probably updated.
 sudo reboot now
-
-# Activate mise
-eval "$(mise activate bash)"
-
-export DOTS=$HOME/Projects/github.com/stellarhoof/dots
-git clone https://github.com/stellarhoof/dots.git $DOTS
-mise bootstrap --yes --cd $DOTS/common
-mise bootstrap --yes --cd $DOTS/void

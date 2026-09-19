@@ -53,7 +53,7 @@ spawn-at-startup "pipewire"
 
 spawn-at-startup "noctalia"
 // Noctalia generated colors
-// include "matugen.kdl"
+include optional=true "matugen.kdl"
 
 // Ask clients to omit client-side decorations if possible.
 prefer-no-csd

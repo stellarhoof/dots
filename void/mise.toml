@@ -7,17 +7,9 @@ group = "root"
 mode = "644"
 content = '''
 [terminal]
-# The VT to run the greeter on.
 vt = 7
-
-# The default session, also known as the greeter.
 [default_session]
-command = "tuigreet"
-
-# The user to run the command as. The privileges this user must have depends
-# on the greeter. A graphical greeter may for example require the user to be
-# in the `video` group.
-user = "_greeter"
+command = "tuigreet --remember --remember-user-session"
 '''
 
 # Dependency of ddcutil
@@ -90,21 +82,6 @@ content = '''
 # Cloudflare DNS servers. They're appended to allow DNS servers from VPNs to take precedence.
 name_servers_append="1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001"
 '''
-
-# [bootstrap.directories."/etc/NetworkManager/conf.d"]
-# owner = "root"
-# group = "root"
-# mode = "755"
-
-# # Use cloudflare's DNS servers for all connections
-# [bootstrap.files."/etc/NetworkManager/conf.d/00-global-dns.conf"]
-# owner = "root"
-# group = "root"
-# mode = "644"
-# content = '''
-# [global-dns-domain-*]
-# servers=1.1.1.1,1.0.0.1,2606:4700:4700::1111,2606:4700:4700::1001
-# '''
 
 [dotfiles]
 "~/.config/fish" = { source = "./.config/fish" }
