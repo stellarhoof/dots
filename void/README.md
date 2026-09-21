@@ -1,3 +1,17 @@
+# TODO
+
+- Better linux console (kmscon)
+- Optimize boot process
+- Look at boot errors
+- Investigate sleep states
+- Optimize idle and sleep (hibernate on lid close instead of sleep?)
+- Check whether I've got latest BIOS/kernel
+- auto-cpufreq?
+- Variable display refresh rate?
+- Check whether video hardware decoding is on (browser's hdw acceleration)
+- kernel 6.5 amd-pstate?
+- Learn PAM
+
 # Tips
 
 Parameters passed to the kernel during boot: `cat /proc/cmdline`
@@ -10,6 +24,7 @@ Inspect system logs: `svlogtail [service]`
 # Resources
 
 https://animeshz.github.io/site/blogs/void-linux.html
+https://chimera-linux.org/docs/faq
 
 # Battery life
 
@@ -32,12 +47,3 @@ https://wiki.archlinux.org/title/Power_management
   - https://wiki.archlinux.org/title/Framework_Laptop_13#(AMD)_Washed-out_colors_when_using_power-profiles-daemon_in_power-saver_or_balanced_mode
 
 - https://wiki.archlinux.org/title/Power_management
-
-## My notes
-
-- Optimize idle and sleep (hibernate on lid close instead of sleep?)
-- Check whether I've got latest BIOS/kernel
-- auto-cpufreq?
-- Variable display refresh rate?
-- Check whether video hardware decoding is on (browser's hdw acceleration)
-- kernel 6.5 amd-pstate?
