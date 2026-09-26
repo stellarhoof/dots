@@ -66,11 +66,13 @@ adopt = true
 "brew:worktrunk" = "latest"
 "brew:yt-dlp" = "latest"
 "brew:zoxide" = "latest"
+"brew:newsboat" = "latest"
 
 [dotfiles]
 "~/.local/bin" = { source = "./.local/bin" }
 "~/.config/fish" = { source = "./.config/fish" }
 "~/.config/kitty" = { source = "./.config/kitty" }
+"~/.config/newsboat" = { source = "./.config/newsboat" }
 
 [bootstrap.macos.launchd.agents.session-env]
 program = "$HOME/.local/bin/session-env.sh"
