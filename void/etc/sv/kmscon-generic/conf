@@ -1,0 +1,6 @@
+# Shared configuration for all kmscon-ttyN services.
+
+# Extra kmscon arguments. The VT is derived from the service
+# directory name (kmscon-tty2 -> tty2), so it is deliberately
+# NOT set here.
+KMSCON_ARGS=""

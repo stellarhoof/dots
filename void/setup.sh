@@ -1,24 +1,25 @@
 #!/bin/bash
 
 # NOTE: Don't select any service after installing the base image
+# NOTE: Run this script as root
 
 # Update xbps
-sudo xbps-install -yu xbps
+xbps-install -yu xbps
 
 # Add repository for non-free packages
-sudo xbps-install -y void-repo-nonfree
+xbps-install -y void-repo-nonfree
 
 # Add repository for noctalia
-echo "repository=https://repo.voiders.dev" | sudo tee /etc/xbps.d/10-voiders-community.conf
+echo "repository=https://repo.voiders.dev" >/etc/xbps.d/10-voiders-community.conf
 
 # Synchronize remote repository index files and update system
-sudo xbps-install -Syu
+xbps-install -Syu
 
 # Missing:
 # - tailwindcss-language-server
 # - worktrunk
 # - git-get
-sudo xbps-install -y \
+xbps-install -y \
   7zip \
   ast-grep \
   bind-utils \
@@ -46,7 +47,6 @@ sudo xbps-install -y \
   greetd \
   htop \
   hub \
-  hyprcursor \
   libatomic \
   mesa \
   mesa-vaapi \
@@ -80,33 +80,63 @@ sudo xbps-install -y \
   xtools \
   yt-dlp \
   iwd \
-  zoxide
+  zoxide \
+  kmscon \
+  turnstile \
+  rtkit \
+  bluez \
+  libspa-bluetooth \
+  wireless-regdb \
+  xwayland-satellite \
+  bibata-modern-ice
+
+# https://www.marcusfolkesson.se/blog/linux-wireless-regulatory/
+
+# Grants processes higher scheduling priority when competing with other threads (e.x. audio will be given priority over browser threads).
+# See https://www.linuxdj.com/notes/pipewire-real-time-scheduling-in-2026-rtkit-portal-and-rlimits/
+
+# Install kmscon runit services to `/etc/sv` since the kmscon package does not include them.
+cp -R ./etc/sv/kmscon-generic /etc/sv
+for vt in {8..8}; do
+  dir=/etc/sv/kmscon-tty$vt
+  mkdir -p $dir/log
+  ln -sf ../kmscon-generic/run $dir/
+  ln -sf ../kmscon-generic/finish $dir/
+  ln -sf ../kmscon-generic/conf $dir/
+  ln -sf ../../kmscon-generic/log/run $dir/log/
+  ln -sf /run/runit/supervise.kmscon-tty$vt $dir/supervise
+  ln -sf /run/runit/supervise.kmscon-tty$vt-log $dir/log/supervise
+done
 
 # Services
 
 # Synchronizes system clock with NTP servers
-sudo ln -s /etc/sv/chronyd /var/service/
+ln -s /etc/sv/chronyd /var/service/
 # System logger
-sudo ln -s /etc/sv/socklog-unix /var/service/
-sudo ln -s /etc/sv/nanoklogd /var/service/
+ln -s /etc/sv/socklog-unix /var/service/
+ln -s /etc/sv/nanoklogd /var/service/
 # Power profiles daemon
-sudo ln -s /etc/sv/power-profiles-daemon /var/service/
+ln -s /etc/sv/power-profiles-daemon /var/service/
 # System dbus
-sudo ln -s /etc/sv/dbus /var/service
+ln -s /etc/sv/dbus /var/service
 # Login manager
-sudo ln -s /etc/sv/greetd /var/service/
+ln -s /etc/sv/greetd /var/service/
 # WiFi connection manager
-sudo ln -s /etc/sv/iwd /var/service
+ln -s /etc/sv/iwd /var/service
+# Bluetooth manager
+ln -s /etc/sv/bluetoothd /var/service
+# Per user services manager
+ln -s /etc/sv/turnstiled /var/service
+
+# Use kmscon on tty6 and leave other TTYs untouched in case kmscon doesn't start properly
+rm /var/service/agetty-tty8
+ln -s /etc/sv/kmscon-tty8 /var/service
 
 # Connect to the internet
 # iwctl station wlp1s0 connect [SSID]
 
-# Enable pipewire's session manager
-sudo mkdir -p /etc/pipewire/pipewire.conf.d
-sudo ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
-
 # Update man pages
-sudo makewhatis /usr/share/man
+makewhatis /usr/share/man
 
 # Reboot machine since the kernel was probably updated.
-sudo reboot now
+reboot now

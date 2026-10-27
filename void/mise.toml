@@ -1,6 +1,20 @@
 [settings]
 dotfiles.default_mode = "symlink-each"
 
+# Start niri wrapped in dbus-run-session since we don't use systemd
+[bootstrap.files."/usr/local/share/wayland-sessions/niri.desktop"]
+owner = "root"
+group = "root"
+mode = "644"
+content = '''
+[Desktop Entry]
+Name=Niri
+Comment=A scrollable-tiling Wayland compositor
+Type=Application
+DesktopNames=niri
+Exec=/bin/sh -c 'exec niri --session 2>&1 | svlogd -ttt ~/.local/state/log/niri'
+'''
+
 [bootstrap.files."/etc/greetd/config.toml"]
 owner = "root"
 group = "root"
@@ -9,8 +23,10 @@ content = '''
 [terminal]
 vt = 7
 [default_session]
-command = "tuigreet --remember --remember-user-session"
+user = _greeter
+command = "tuigreet --remember --remember-user-session --sessions /usr/local/share/wayland-sessions"
 '''
+
 
 # Dependency of ddcutil
 [bootstrap.files."/etc/modules-load.d/i2c-dev.conf"]
@@ -23,19 +39,6 @@ content = "i2c-dev"
 owner = "root"
 group = "root"
 mode = "755"
-
-# Start niri wrapped in dbus-run-session since we don't use systemd
-[bootstrap.files."/usr/local/share/wayland-sessions/niri.desktop"]
-owner = "root"
-group = "root"
-mode = "644"
-content = '''
-[Desktop Entry]
-Name=Niri (with dbus)
-Type=Application
-DesktopNames=niri
-Exec=dbus-run-session niri --session
-'''
 
 # https://www.januschka.com/chromium-omarchy.html
 [bootstrap.directories."/etc/brave"]
@@ -67,7 +70,7 @@ EnableNetworkConfiguration=true
 [Scan]
 # Scan manually via `iwctl station [name] scan`
 # Get `name` with `iwctl device list`
-DisablePeriodicScan=true
+# DisablePeriodicScan=true
 
 [Network]
 # Do not publish DHCP provided DNS servers; we'll manage DNS servers manually
@@ -81,13 +84,76 @@ mode = "644"
 content = '''
 # Cloudflare DNS servers. They're appended to allow DNS servers from VPNs to take precedence.
 name_servers_append="1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001"
+
+# Send A (IPv4 record) and AAAA (IPv6 record) queries sequentially instead of concurrently. It's a long story, but my T-Mobile home router mishandles these queries and causes a 5s timeout. Sending the queries sequentially should only add a little latency anyway.
+resolv_conf_options="single-request"
+'''
+
+# Set system-wide monospace font
+[bootstrap.files."/etc/fonts/local.conf"]
+owner = "root"
+group = "root"
+mode = "644"
+content = '''
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <!-- Generic monospace family -->
+  <alias>
+    <family>monospace</family>
+    <prefer>
+      <family>Fira Code</family>
+    </prefer>
+  </alias>
+
+  <!-- Default when apps request "monospace" -->
+  <match target="pattern">
+    <test qual="any" name="family">
+      <string>monospace</string>
+    </test>
+    <edit name="family" mode="prepend" binding="strong">
+      <string>Fira Code</string>
+    </edit>
+  </match>
+</fontconfig>
+'''
+
+[bootstrap.directories."/etc/kmscon"]
+owner = "root"
+group = "root"
+mode = "755"
+
+[bootstrap.files."/etc/kmscon/kmscon.conf"]
+owner = "root"
+group = "root"
+mode = "644"
+content = '''
+drm
+no-mouse
+no-blink
+no-switchvt
+sb-size=10000
+font-size=24
+xkb-repeat-rate=40
+xkb-repeat-delay=300
+xkb-options=ctrl:swapcaps,altwin:swap_lalt_lwin
 '''
 
 [dotfiles]
 "~/.config/fish" = { source = "./.config/fish" }
 "~/.config/foot" = { source = "./.config/foot" }
 "~/.config/niri" = { source = "./.config/niri" }
+"~/.config/service" = { source = "./.config/service" }
 "~/.config/noctalia" = { source = "./.config/noctalia" }
+
+[bootstrap.hooks.post-dotfiles]
+run = '''
+# https://docs.voidlinux.org/config/services/user-services.html#per-user-services
+# The `dbus.run` file is being tracked in this repo instead of linked as per the void documentation example.
+CONFDIR=$HOME/.config/service/dbus
+mkdir -p $CONFDIR
+ln -sf /usr/share/examples/turnstile/dbus.check $CONFDIR/check
+'''
 
 [bootstrap.user]
 login_shell = "/usr/bin/fish"

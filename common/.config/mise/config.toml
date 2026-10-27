@@ -22,6 +22,7 @@ g = "git"
 less = "moor"
 tp = "trash-put"
 vi = "nvim"
+htop = "htop --no-meters --readonly"
 # rm = "echo 'Use trash-put instead!'"
 # Tools
 p = "pnpm"

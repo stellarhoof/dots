@@ -1,0 +1,16 @@
+#!/bin/sh
+# Shared log runner for the kmscon-ttyN runit services.
+#
+# runsv starts this with the working directory set to the service's log
+# directory, e.g. /etc/sv/kmscon-tty2/log. That directory is a real
+# directory (only the ./run inside it is a symlink back here), so getcwd()
+# keeps the per-VT name and the log destination can be derived from it.
+#
+#   /etc/sv/kmscon-tty2/log  ->  /var/log/kmscon-tty2
+#
+# svlogd -t prefixes each line with a timestamp; -tt uses TAI64N for the
+# full timestamp format.
+name=${PWD%/*}
+name=${name##*/}
+
+exec vlogger -t $name -p daemon

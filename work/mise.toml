@@ -16,13 +16,14 @@ adopt = true
 "brew-cask:font-fira-code" = "latest"
 "brew-cask:handbrake-app" = "latest"
 "brew-cask:kitty" = "latest"
-"brew-cask:nordvpn" = "latest"
+"brew-cask:ghostty" = "latest"
 "brew-cask:pritunl" = "latest"
 "brew-cask:redis-insight" = "latest"
 "brew-cask:slack" = "latest"
 "brew-cask:studio-3t" = "latest"
 "brew-cask:transmission" = "latest"
 "brew-cask:ungoogled-chromium" = "latest"
+"brew-cask:keepassxc" = "latest"
 "brew:ast-grep" = "latest"
 "brew:bfg" = "latest"
 "brew:coreutils" = "latest"
@@ -67,7 +68,6 @@ adopt = true
 "brew:yt-dlp" = "latest"
 "brew:zoxide" = "latest"
 "brew:newsboat" = "latest"
-"brew:keepassxc" = "latest"
 
 [dotfiles]
 "~/.local/bin" = { source = "./.local/bin" }

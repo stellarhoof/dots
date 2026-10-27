@@ -1,0 +1,9 @@
+#!/bin/sh
+# Shared finish script for the kmscon-ttyN runit services.
+#
+# Same job as Void's agetty-generic/finish: runit does not maintain utmp, so
+# when the service's process exits, clear the login record for this terminal
+# line (and append a logout record to wtmp) to avoid stale `who`/`w`/`last`
+# entries. The line is derived from the service directory name.
+tty=${PWD##*-}
+exec utmpset -w "$tty"

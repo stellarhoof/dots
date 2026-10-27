@@ -1,0 +1,21 @@
+#!/bin/sh
+# Shared run script for the kmscon-ttyN runit services.
+#
+# This mirrors Void's agetty-generic/run: the same script is symlinked from
+# every kmscon-ttyN service directory, so it cannot hardcode the VT. Instead
+# it derives it from the service directory name, e.g.
+#
+#     /etc/sv/kmscon-tty2   -> ${PWD##*-} = "tty2"
+#     /etc/sv/kmscon-ttyS0  -> ${PWD##*-} = "ttyS0"
+exec 2>&1
+
+# Optional configuration. Each kmscon-ttyN/conf is a symlink to
+# ../kmscon-generic/conf (same convention as agetty-ttyN/conf).
+[ -r conf ] && . ./conf
+
+tty=${PWD##*-}
+
+# Bind kmscon explicitly to this VT. Never leave it to "auto": auto-detection
+# can land on a VT that still has an agetty, and two apps on one VT freeze
+# the console.
+exec kmscon --vt "$tty" ${KMSCON_ARGS}
