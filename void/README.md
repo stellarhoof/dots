@@ -10,6 +10,8 @@ Inspect system logs: `svlogtail [service]`
 # Resources
 
 https://animeshz.github.io/site/blogs/void-linux.html
+https://news.ycombinator.com/item?id=49732513
+https://docs.searxng.org/own-instance.html
 
 # Battery life
 
@@ -41,3 +43,8 @@ https://wiki.archlinux.org/title/Power_management
 - Variable display refresh rate?
 - Check whether video hardware decoding is on (browser's hdw acceleration)
 - kernel 6.5 amd-pstate?
+
+https://www.reddit.com/r/KeePassium/comments/1uue1c5/how_does_keepassium_handle_multiple/
+use keepassxc to add/remove ssh keys to a running agent
+
+brave stores credentials in a sqlite3 db under the user's profile directory and only uses macos' keychain / linux secret service to store the key used to encrypt/decrypt passwords

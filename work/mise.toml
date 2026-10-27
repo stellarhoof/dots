@@ -67,6 +67,7 @@ adopt = true
 "brew:yt-dlp" = "latest"
 "brew:zoxide" = "latest"
 "brew:newsboat" = "latest"
+"brew:keepassxc" = "latest"
 
 [dotfiles]
 "~/.local/bin" = { source = "./.local/bin" }
