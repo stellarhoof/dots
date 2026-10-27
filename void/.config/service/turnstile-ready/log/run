@@ -1,0 +1,4 @@
+#!/bin/sh
+LOGDIR="${XDG_STATE_HOME:-$HOME/.local/state}/log/turnstile-ready"
+mkdir -p $LOGDIR
+exec svlogd -ttt $LOGDIR

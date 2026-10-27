@@ -1,7 +1,21 @@
+spawn-at-startup "noctalia"
+// Noctalia generated colors
+include optional=true "matugen.kdl"
+
+hotkey-overlay {
+  skip-at-startup
+}
+
+cursor {
+  xcursor-theme "Bibata-Modern-Ice"
+}
+
+
 // https://niri-wm.github.io/niri/Configuration:-Input
 input {
   keyboard {
     // See xkeyboard-config(7).
+    // TODO: Share with kmscon
     xkb {
       options "ctrl:swapcaps,altwin:swap_lalt_lwin"
     }
@@ -21,8 +35,8 @@ output "eDP-1" {
   scale 2
   variable-refresh-rate
 }
-output "DP-7" {
-  scale 2
+output "PNP(BNQ) BenQ PD3220U XAL05492019" {
+  scale 1.75
 }
 
 // Windows positioning and sizing.
@@ -47,13 +61,6 @@ layout {
     offset x=0 y=5
   }
 }
-
-// https://docs.voidlinux.org/config/media/pipewire.html#launching-automatically
-spawn-at-startup "pipewire"
-
-spawn-at-startup "noctalia"
-// Noctalia generated colors
-include optional=true "matugen.kdl"
 
 // Ask clients to omit client-side decorations if possible.
 prefer-no-csd
@@ -88,36 +95,27 @@ binds {
   // shows a list of important hotkeys.
   Mod+Shift+Slash { show-hotkey-overlay; }
 
-  Mod+Return hotkey-overlay-title="Terminal" { spawn "foot"; }
-  Mod+Shift+Return hotkey-overlay-title="Browser" { spawn "brave"; }
+  // allow-when-locked makes these keybinds work when the session is locked as well
+  XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+  XF86AudioLowerVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+  XF86AudioMute         allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+  XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
+  XF86AudioPlay         allow-when-locked=true { spawn-sh "noctalia msg media play"; }
+  XF86AudioStop         allow-when-locked=true { spawn-sh "noctalia msg media stop"; }
+  XF86AudioPrev         allow-when-locked=true { spawn-sh "noctalia msg media prev"; }
+  XF86AudioNext         allow-when-locked=true { spawn-sh "noctalia msg media next"; }
 
-  // // Example volume keys mappings for PipeWire & WirePlumber.
-  // // The allow-when-locked=true property makes them work even when the session is locked.
-  // // Using spawn-sh allows to pass multiple arguments together with the command.
-  // // "-l 1.0" limits the volume to 100%.
-  // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-  // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-  // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-  // XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-  // // Example media keys mapping using playerctl.
-  // // This will work with any MPRIS-enabled media player.
-  // XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-  // XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-  // XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-  // XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-
-  XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up"; }
-  XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
-  XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
-  XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
-  XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
-
+  // Noctalia panels
+  Mod+Space  { spawn-sh "noctalia msg panel-toggle launcher"; }
   Mod+Escape { spawn-sh "noctalia msg panel-toggle session"; }
-  Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
-  Mod+S { spawn-sh "noctalia msg theme-mode-toggle"; }
-  Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
-  Alt+Tab { spawn-sh "noctalia msg window-switcher"; }
+  Mod+S      { spawn-sh "noctalia msg theme-mode-toggle"; }
+  Mod+Comma  { spawn-sh "noctalia msg settings-toggle"; }
+  Mod+W      { spawn-sh "noctalia msg panel-toggle wallpaper"; }
+
+  // Applications
+  Mod+Return hotkey-overlay-title="Terminal"      { spawn "foot"; }
+  Mod+Shift+Return hotkey-overlay-title="Browser" { spawn "brave"; }
 
   // Open/close the Overview: a zoomed-out view of workspaces and windows.
   // You can also move the mouse into the top-left hot corner,
@@ -272,7 +270,7 @@ binds {
   // Toggle tabbed column display mode.
   // Windows in this column will appear as vertical tabs,
   // rather than stacked on top of each other.
-  Mod+W { toggle-column-tabbed-display; }
+  Mod+T { toggle-column-tabbed-display; }
 
   // Actions to switch layouts.
   // Note: if you uncomment these, make sure you do NOT have

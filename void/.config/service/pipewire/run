@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Runit doesn't capture stderr in logs (only stdout) so we need to redirect stderr instead.
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+# https://docs.voidlinux.org/config/services/user-services.html#per-user-services
+# https://docs.voidlinux.org/config/media/pipewire.html#launching-automatically
+exec chpst -e "$TURNSTILE_ENV_DIR" pipewire $OPTS

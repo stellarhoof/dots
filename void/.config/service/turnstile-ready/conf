@@ -1,0 +1,2 @@
+# https://docs.voidlinux.org/config/services/user-services.html#per-user-services
+core_services="dbus"

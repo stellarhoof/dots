@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Same as /usr/share/examples/turnstile/dbus.run but with the following stderr redirect added. Runit doesn't capture stderr in logs (only stdout) so we need to redirect stderr instead.
+exec 2>&1
+
+[ -r ./conf ] && . ./conf
+
+: "${DBUS_SESSION_BUS_ADDRESS:=unix:path=/run/user/$(id -u)/bus}"
+
+if [ -d "$TURNSTILE_ENV_DIR" ]; then
+  echo "$DBUS_SESSION_BUS_ADDRESS" >"$TURNSTILE_ENV_DIR"/DBUS_SESSION_BUS_ADDRESS
+fi
+
+exec chpst -e "$TURNSTILE_ENV_DIR" dbus-daemon --session --nofork --nopidfile --address="$DBUS_SESSION_BUS_ADDRESS" $OPTS

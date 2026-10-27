@@ -7,25 +7,27 @@ enable_community_templates = false
 [theme.templates.user.brave]
 input_path = "./brave/classic-theme.json"
 output_path = "/etc/brave/policies/managed/classic-theme.json"
-post_hook = "brave --refresh-platform-policy --no-startup-window"
-
-[theme.templates.user.foot]
-input_path = "./foot/matugen.ini"
-output_path = "~/.config/foot/matugen.ini"
+# post_hook = "exec brave --refresh-platform-policy --no-startup-window"
 
 [theme.templates.user.niri]
 input_path = "./niri/matugen.kdl"
 output_path = "~/.config/niri/matugen.kdl"
 
-[theme.templates.user.nvim]
-input_path = "./nvim/matugen.lua"
-output_path = "~/.config/nvim/colors/matugen.lua"
-post_hook = "pkill -SIGUSR1 nvim || true"
+# Update foot's palette for new instances. Foot doesn't live reload its config.
+[theme.templates.user.foot]
+input_path = "./foot/matugen.ini"
+output_path = "~/.config/foot/matugen.ini"
 
+# Live reload foot's palette. Runs on colorscheme changes and light/mode switches.
 [theme.templates.user.terminal-sequences]
 input_path = "./terminal-sequences"
 output_path = "~/.cache/terminal-sequences"
 post_hook = "tee /dev/pts/[0-9]* < ~/.cache/terminal-sequences"
+
+[theme.templates.user.nvim]
+input_path = "./nvim/matugen.lua"
+output_path = "~/.config/nvim/colors/matugen.lua"
+post_hook = "pkill -SIGUSR1 nvim || true"
 
 # Rest
 
@@ -161,13 +163,6 @@ show_weather = true
 enabled = true
 temperature_night = 5000
 
-[plugin_settings."noctalia/wallhaven"]
-browser_placement = "floating"
-browser_position = "center"
-
-[plugins]
-enabled = ["noctalia/wallhaven"]
-
 [shell]
 app_icon_color = "primary"
 app_icon_colorize = true
@@ -185,10 +180,6 @@ open_near_click_clipboard = true
 open_near_click_control_center = true
 open_near_click_session = true
 session_placement = "floating"
-
-[shell.session]
-grid = true
-grid_columns = 1
 
 [theme]
 builtin = "Tokyo-Night"
